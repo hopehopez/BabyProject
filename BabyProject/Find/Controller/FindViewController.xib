@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FindViewController">
+            <connections>
+                <outlet property="tableView" destination="FAq-KY-wcQ" id="Boi-2D-rl0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="b8h-Qq-Lhh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="Jvt-QE-Zav"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mam-XM-LvJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.28235294117647058" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-pA-zHz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                </imageView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CJw-86-TAU">
+                    <rect key="frame" x="126" y="28" width="123" height="29"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.28235294119999998" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="123" id="HBZ-Ys-tL4"/>
+                    </constraints>
+                    <segments>
+                        <segment title="广场"/>
+                        <segment title="知识"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="SegmentChange:" destination="-1" eventType="valueChanged" id="fje-g7-a2J"/>
+                    </connections>
+                </segmentedControl>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="7IH-KN-boM">
+                    <rect key="frame" x="339" y="31" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="Kpi-9r-hma"/>
+                        <constraint firstAttribute="width" constant="22" id="lUl-Zy-VuY"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bg_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="zWy-9B-ka1">
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FAq-KY-wcQ">
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="b8h-Qq-Lhh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="65b-qK-FfZ"/>
+                <constraint firstAttribute="bottom" secondItem="FAq-KY-wcQ" secondAttribute="bottom" constant="49" id="9b3-qF-k9q"/>
+                <constraint firstAttribute="centerX" secondItem="CJw-86-TAU" secondAttribute="centerX" id="I1C-Un-5nE"/>
+                <constraint firstItem="zWy-9B-ka1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="W0t-gt-03Z"/>
+                <constraint firstItem="FAq-KY-wcQ" firstAttribute="top" secondItem="b8h-Qq-Lhh" secondAttribute="bottom" id="Y6r-Yy-wGV"/>
+                <constraint firstItem="CJw-86-TAU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="bBm-d1-nhm"/>
+                <constraint firstItem="7IH-KN-boM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="31" id="dDU-4O-Gfd"/>
+                <constraint firstItem="b8h-Qq-Lhh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dEW-0x-moT"/>
+                <constraint firstItem="zWy-9B-ka1" firstAttribute="top" secondItem="b8h-Qq-Lhh" secondAttribute="bottom" id="dpS-7S-gln"/>
+                <constraint firstAttribute="bottom" secondItem="zWy-9B-ka1" secondAttribute="bottom" constant="49" id="eNQ-bJ-A9I"/>
+                <constraint firstAttribute="trailing" secondItem="b8h-Qq-Lhh" secondAttribute="trailing" id="lPu-TU-tuy"/>
+                <constraint firstAttribute="trailing" secondItem="7IH-KN-boM" secondAttribute="trailing" constant="14" id="qIu-5J-TvE"/>
+                <constraint firstAttribute="trailing" secondItem="FAq-KY-wcQ" secondAttribute="trailing" id="utv-J2-HEj"/>
+                <constraint firstItem="FAq-KY-wcQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vMv-WD-yYU"/>
+                <constraint firstAttribute="trailing" secondItem="zWy-9B-ka1" secondAttribute="trailing" id="xvC-Pz-elZ"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="mam-XM-LvJ"/>
+                    <exclude reference="eYk-pA-zHz"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="cell_bg_h.png" width="320" height="25"/>
+        <image name="navbar_i5.png" width="320" height="64"/>
+        <image name="searchicon.png" width="20" height="21"/>
+    </resources>
+</document>
