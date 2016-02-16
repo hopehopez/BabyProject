@@ -37,7 +37,7 @@
 @property (nonatomic, copy) NSString <Optional> *relationWithCreator;
 @property (nonatomic, copy) NSString <Optional> *removed;
 @property (nonatomic, copy) NSString <Optional> *secured;
-@property (nonatomic, copy) NSString <Optional> *share;
+//@property (nonatomic, copy) NSString <Optional> *share;
 @property (nonatomic, copy) NSString <Optional> *state;
 @property (nonatomic, copy) NSString <Optional> *tags;
 @property (nonatomic, copy) NSString <Optional> *taskAwardPoints;
@@ -47,6 +47,6 @@
 @property (nonatomic, copy) NSString <Optional> *vaccineFeed;
 @property (nonatomic, copy) NSString <Optional> *weightHeightFeed;
 @property (nonatomic, copy) NSString <Optional> *hasFollowed;
-@property (nonatomic, copy) NSString <Optional> *likers;
+//@property (nonatomic, copy) NSString <Optional> *likers;
 
 @end

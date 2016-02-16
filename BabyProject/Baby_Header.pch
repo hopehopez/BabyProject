@@ -30,8 +30,12 @@
 
 //model
 #import "ActivityModel.h"
+#import "FeedModel.h"
 
 //网络接口地址
 #import "RequestURL.h"
+
+//FeedCell
+#import "FeedCell.h"
 
 #endif

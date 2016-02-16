@@ -13,10 +13,11 @@
 - (IBAction)backClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *descTxt;
+@property (weak, nonatomic) IBOutlet UILabel *descTxt;
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
+@property (weak, nonatomic) IBOutlet UITableView *tv;
 
 @property (nonatomic, strong) ActivityModel *model;
 
