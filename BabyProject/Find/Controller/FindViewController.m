@@ -7,10 +7,12 @@
 //
 
 #import "FindViewController.h"
-#import "ActivityModel.h"
 #import "RecommendModel.h"
 #import "ActivityCell.h"
 #import "RecommendCell.h"
+#import "TopicCell.h"
+#import "PastTopicsViewController.h"
+#import "TopicActivityViewController.h"
 @interface FindViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -32,45 +34,30 @@
     
     [self registCell];
     
-
-    
     [self loadData];
     
+    [self addRefresh];
 }
 
-#pragma mark - 创建头视图
-- (void)createHeadView{
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
-    ActivityModel *model = [_dataArray firstObject];
+#pragma mark - 添加刷新
+- (void)addRefresh{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData];
+        [_tableView.header endRefreshing];
+    }];
     
-    if (model) {
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:headView.bounds];
-        [imgV sd_setImageWithURL:[NSURL URLWithString:model.sampleImage] placeholderImage:nil options:SDWebImageRefreshCached];
-        [headView addSubview:imgV];
-        
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 300)/2, 50, 300, 30)];
-        nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.textColor = [UIColor whiteColor];
-        nameLabel.textAlignment = NSTextAlignmentCenter;
-        nameLabel.font = [UIFont systemFontOfSize:24];
-        nameLabel.text = model.name;
-        [headView addSubview:nameLabel];
-        
-        UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 100)/2, 100, 100, 20)];
-        countLabel.backgroundColor = [UIColor whiteColor];
-        countLabel.font = [UIFont systemFontOfSize:15];
-        countLabel.textAlignment = NSTextAlignmentCenter;
-        nameLabel.layer.cornerRadius = 10;
-        nameLabel.layer.masksToBounds = YES;
-        countLabel.text = [NSString stringWithFormat:@"%@%@", model.accomplishedTimes, @"人次参与"];
-        [headView addSubview:countLabel];
-    }
+    [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
     
-    self.tableView.tableHeaderView = headView;
+    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    
+    _tableView.header = header;
 }
 
 #pragma mark - 注册cell
 - (void)registCell{
+    UINib *nib = [UINib nibWithNibName:@"TopicCell" bundle:nil];
+    [_tableView registerNib:nib forCellReuseIdentifier:@"TopicCell"];
+    
     UINib *nib1 = [UINib nibWithNibName:@"ActivityCell" bundle:nil];
     [_tableView registerNib:nib1 forCellReuseIdentifier:@"ActivityCell"];
     
@@ -118,7 +105,6 @@
         
         [self.tableView reloadData];
         
-        [self createHeadView];
         
     } andFailBlock:^(NSURL *url, NSError *error) {
         NSLog(@"%@", error.localizedDescription);
@@ -130,7 +116,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray *array = [_dataArray lastObject];
     if (array.count > 0) {
-        return array.count + 1;
+        return array.count + 2;
     }
     else{
         return 0;
@@ -138,64 +124,53 @@
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if (indexPath.row == 0) {
+        TopicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopicCell"];
+        ActivityModel *model = _dataArray[0];
+        [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.sampleImage ] placeholderImage:nil options:SDWebImageRefreshCached];
+        cell.nameLabel.text = model.name;
+        cell.countLabel.text = [NSString stringWithFormat:@"%@%@", model.accomplishedTimes, @"人次参与"];
+        return cell;
+    }else if (indexPath.row == 1) {
         ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
         ActivityModel *model = _dataArray[1];
         cell.lastActivityLabel.text = model.name;
         return cell;
     }else{
         RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendCell"];
-        RecommendModel *model = _dataArray[2][indexPath.row - 1];
+        RecommendModel *model = _dataArray[2][indexPath.row - 2];
         [cell setModel:model];
         return cell;
     }
     
 }
 #pragma mark - delegate
+//返回cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
+        return 170;
+    }
+    if (indexPath.row == 1) {
         return 50;
     }else{
-        return (SCREEN_WIDTH - 12)/4 + 60;
+        return (SCREEN_WIDTH - 12)/4 + 65;
     }
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 5;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        TopicActivityViewController *topicController = [[TopicActivityViewController alloc] init];
+        topicController.hidesBottomBarWhenPushed = YES;
+        topicController.model = _dataArray[0];
+        [self.navigationController pushViewController:topicController animated:YES];
+    }else if (indexPath.row == 1){
+        PastTopicsViewController *pastController = [[PastTopicsViewController alloc] init];
+        pastController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pastController animated:YES];
+    }else{
+        
+    }
+    
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 5;
-}
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
-//    ActivityModel *model = [_dataArray firstObject];
-//    
-//    if (model) {
-//        UIImageView *imgV = [[UIImageView alloc] initWithFrame:headView.bounds];
-//        [imgV sd_setImageWithURL:[NSURL URLWithString:model.sampleImage] placeholderImage:nil options:SDWebImageRefreshCached];
-//        [headView addSubview:imgV];
-//        
-//        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 300)/2, 50, 300, 30)];
-//        nameLabel.backgroundColor = [UIColor clearColor];
-//        nameLabel.textColor = [UIColor whiteColor];
-//        nameLabel.textAlignment = NSTextAlignmentCenter;
-//        nameLabel.font = [UIFont systemFontOfSize:24];
-//        nameLabel.text = model.name;
-//        [headView addSubview:nameLabel];
-//        
-//        UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150)/2, 100, 150, 20)];
-//        countLabel.backgroundColor = [UIColor whiteColor];
-//        countLabel.font = [UIFont systemFontOfSize:15];
-//        countLabel.textAlignment = NSTextAlignmentCenter;
-//        nameLabel.layer.cornerRadius = 5;
-//        countLabel.text = [NSString stringWithFormat:@"%@%@", model.accomplishedTimes, @"人次参与"];
-//        [headView addSubview:countLabel];
-//    }
-//    
-//    
-//    return headView;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

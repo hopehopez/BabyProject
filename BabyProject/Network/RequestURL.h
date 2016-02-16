@@ -15,7 +15,11 @@
 //如果项目中使用的后台是同一个域名 那么 每一个接口的前缀是相同的 可以把相同的前缀放到baseURL中 不同的部分再放在不同的宏中
 
 //发现
+//广场
 #define FIND_SQUARE_URL @"http://api.xiaobudian.me/childhood//api/discovery?city="
-
+//广场_往期主题
+#define FIND_TOPICS @"http://api.xiaobudian.me/childhood/api/activities?page=%ld&size=20"
+//广场_最新主题
+#define FIND_LATEST_TOPICS @"http://api.xiaobudian.me/childhood/api/feeds/addon/%@?from=%ld&size=18"
 
 #endif

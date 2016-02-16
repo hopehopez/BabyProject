@@ -26,6 +26,10 @@
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "Reachability.h"
+#import "MJRefresh.h"
+
+//model
+#import "ActivityModel.h"
 
 //网络接口地址
 #import "RequestURL.h"
