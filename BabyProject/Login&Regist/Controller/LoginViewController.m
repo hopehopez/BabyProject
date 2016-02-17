@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBarHidden = YES;
-    
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,8 +61,8 @@
 }
 
 - (IBAction)ignoreLogin:(id)sender {
-
-   [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
     
 }
 @end

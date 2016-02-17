@@ -24,7 +24,7 @@
 //TagFeeds
 #define FIND_TAG_FEEDS @"http://api.xiaobudian.me/childhood/api/feeds/tag/%@?from=%ld&size=20"
 
-////3动态_精选
-#define FEEDS_FEATURE  @"http://api.xiaobudian.me/childhood/api/feeds/featured?from=0&size=20&city=%E5%8C%97%E4%BA%AC"
+////动态_精选
+#define FEEDS_FEATURE  @"http://api.xiaobudian.me/childhood/api/featured/categories/%@/feeds?from=%ld&size=20"
 
 #endif

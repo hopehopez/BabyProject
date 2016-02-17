@@ -25,6 +25,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+//    LoginViewController *loginView = [[LoginViewController alloc] init];
+//    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
+//    [self presentViewController:nav animated:YES completion:nil];
+
+    
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor lightGrayColor];
     _dataArray = [NSMutableArray array];

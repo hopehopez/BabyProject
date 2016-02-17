@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //[self.tabBar setBackgroundImage:[UIImage imageNamed:@"cell_bg_n"]];
+    [self.tabBar setBackgroundColor:[UIColor whiteColor]];
 }
 
 #pragma mark - 隐藏系统tabBar上的子视图
@@ -64,14 +66,14 @@
         
         //设置默认第二个按钮
         
-        if (i==1) {
+        if (i==[ZSQStorage getItemSelectedIndex]) {
             itemImgV.image = nav.tabBarItem.selectedImage;
             //[label setTextColor:[UIColor orangeColor]];
             //将当前高亮的按钮保存在临时变量
            // _tmpLabel = label;
             _tmpImgV = itemImgV;
             _tmpNavigationController = nav;
-            self.selectedIndex = 1;
+            self.selectedIndex = i;
         }
         
         //创建点击手势
@@ -109,7 +111,9 @@
     //子视图控制器页面 的切换
     self.selectedIndex = tap.view.tag - 100;
     
+    //主动调用代理方法
     [self.delegate tabBarController:self didSelectViewController:self.selectedViewController];
+    
     //    NSLog(@"%li", tap.view.tag);
     //    UIImageView *imgV = (UIImageView *)tap.view;
     

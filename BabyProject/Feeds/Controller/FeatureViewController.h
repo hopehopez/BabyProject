@@ -11,4 +11,6 @@
 @interface FeatureViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tv;
 
+@property (nonatomic, copy) NSString *catagory;
+
 @end

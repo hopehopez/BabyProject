@@ -21,26 +21,25 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBarHidden = YES;
     [self prepareView];
+    
 }
 
 - (void)prepareView{
     
     FeatureViewController *oneViewController = [[FeatureViewController alloc] init];
     oneViewController.title = @"成长记录";
-    oneViewController.view.backgroundColor = [UIColor brownColor];
+    oneViewController.catagory = @"1";
     
     FeatureViewController *twoViewController = [[FeatureViewController alloc] init];
     twoViewController.title = @"用品";
-    twoViewController.view.backgroundColor = [UIColor purpleColor];
+    twoViewController.catagory = @"2";
     
     FeatureViewController *threeViewController = [[FeatureViewController alloc] init];
     threeViewController.title = @"玩具";
-    threeViewController.view.backgroundColor = [UIColor orangeColor];
-    
+    threeViewController.catagory = @"5";
     FeatureViewController *fourViewController = [[FeatureViewController alloc] init];
     fourViewController.title = @"奶粉辅食";
-    fourViewController.view.backgroundColor = [UIColor magentaColor];
-    
+    fourViewController.catagory = @"4";
     
     SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] init];
     

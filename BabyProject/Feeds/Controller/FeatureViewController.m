@@ -71,8 +71,8 @@
 
 #pragma mark - 下载数据
 - (void)loadData{
-    // NSString *url = [NSString stringWithFormat:FIND_TAG_FEEDS, self.ID, _page * NUMBER];
-    [BaseHttpClient httpType:GET andURL:FEEDS_FEATURE andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
+     NSString *url = [NSString stringWithFormat:FEEDS_FEATURE, self.catagory, _page * NUMBER];
+    [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
 
         NSArray *feedsArray = data[@"data"];
         for (NSDictionary *dict1 in feedsArray) {

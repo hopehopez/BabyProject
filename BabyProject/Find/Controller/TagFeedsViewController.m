@@ -80,8 +80,11 @@
         
         self.tagLabel.text = dict[@"name"];
         
-        NSNumber *countNum = dict[@"count"];
-        [_dataArray addObject:countNum.stringValue];
+        if (_page == 0) {
+            NSNumber *countNum = dict[@"count"];
+            [_dataArray addObject:countNum.stringValue];
+
+        }
         
         NSArray *feedsArray = dict[@"feeds"];
         for (NSDictionary *dict1 in feedsArray) {

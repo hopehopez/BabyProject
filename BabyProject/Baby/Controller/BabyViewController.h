@@ -10,4 +10,13 @@
 
 @interface BabyViewController : UIViewController
 
+- (IBAction)homeBtn:(id)sender;
+
+- (IBAction)settingBtn:(id)sender;
+
+- (IBAction)startBtn:(id)sender;
+
+
+- (IBAction)inviteBtn:(id)sender;
+
 @end

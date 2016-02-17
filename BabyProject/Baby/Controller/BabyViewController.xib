@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -13,8 +13,124 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="x5b-u3-yyD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="Frd-pF-2nO"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的小不点" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jI-XX-6Pe">
+                    <rect key="frame" x="139" y="33" width="96" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="3E0-ZO-MRP"/>
+                        <constraint firstAttribute="height" constant="21" id="7xB-Z9-Zqc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R31-oG-w0I">
+                    <rect key="frame" x="321" y="29" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="YUH-0V-FqM"/>
+                        <constraint firstAttribute="height" constant="30" id="fEA-45-NOR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="设置">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="settingBtn:" destination="-1" eventType="touchUpInside" id="wNl-09-V6Z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV2-8h-ZXg">
+                    <rect key="frame" x="8" y="29" width="58" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="58" id="050-MA-xMy"/>
+                        <constraint firstAttribute="height" constant="30" id="Qsb-AL-IS7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="家庭">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="homeBtn:" destination="-1" eventType="touchUpInside" id="XWM-ZX-9eB"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Familyicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="kaB-Vk-Z9f">
+                    <rect key="frame" x="14" y="36" width="18" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="ouP-A3-LB9"/>
+                        <constraint firstAttribute="width" constant="18" id="t18-Fc-Ans"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_addBaby.png" translatesAutoresizingMaskIntoConstraints="NO" id="aCK-KD-efj">
+                    <rect key="frame" x="54" y="134" width="267" height="228"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="267" id="03z-tm-f13"/>
+                        <constraint firstAttribute="height" constant="228" id="e6T-8R-Blp"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXl-QG-tZn">
+                    <rect key="frame" x="90" y="458" width="195" height="40"/>
+                    <color key="backgroundColor" red="0.8980392157" green="0.2666666667" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="o6O-Ka-vA1"/>
+                        <constraint firstAttribute="width" constant="195" id="vFg-Sv-FwO"/>
+                    </constraints>
+                    <state key="normal" title="通过邀请码开启">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="inviteBtn:" destination="-1" eventType="touchUpInside" id="QfW-WH-KDi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-us-mgb">
+                    <rect key="frame" x="90" y="401" width="195" height="40"/>
+                    <color key="backgroundColor" red="0.89803921568627454" green="0.26666666666666666" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="8jA-Jc-79b"/>
+                        <constraint firstAttribute="width" constant="195" id="Cxq-Jn-Ukx"/>
+                    </constraints>
+                    <state key="normal" title="开启小不点时光相册">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startBtn:" destination="-1" eventType="touchUpInside" id="tsh-M6-OqK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.78332191727399159" blue="0.69320752186940982" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="R31-oG-w0I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="1qb-94-Ymk"/>
+                <constraint firstAttribute="centerX" secondItem="OaA-us-mgb" secondAttribute="centerX" id="2IP-Wk-6Ae"/>
+                <constraint firstAttribute="trailing" secondItem="R31-oG-w0I" secondAttribute="trailing" constant="8" id="CxX-5J-p3S"/>
+                <constraint firstItem="oV2-8h-ZXg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="PaP-Yn-ijQ"/>
+                <constraint firstItem="oV2-8h-ZXg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="PdQ-dF-jSQ"/>
+                <constraint firstItem="2jI-XX-6Pe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="33" id="RZK-Or-Jdd"/>
+                <constraint firstAttribute="centerX" secondItem="oXl-QG-tZn" secondAttribute="centerX" id="URa-6i-P77"/>
+                <constraint firstAttribute="centerX" secondItem="2jI-XX-6Pe" secondAttribute="centerX" id="Uhn-Zw-XuY"/>
+                <constraint firstItem="x5b-u3-yyD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ujh-0F-oip"/>
+                <constraint firstItem="kaB-Vk-Z9f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="Wrh-j0-fyL"/>
+                <constraint firstItem="kaB-Vk-Z9f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="nYJ-Y3-XlE"/>
+                <constraint firstItem="aCK-KD-efj" firstAttribute="top" secondItem="x5b-u3-yyD" secondAttribute="bottom" constant="70" id="qKW-oG-W8Q"/>
+                <constraint firstItem="x5b-u3-yyD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r3O-7z-kWC"/>
+                <constraint firstItem="OaA-us-mgb" firstAttribute="top" secondItem="aCK-KD-efj" secondAttribute="bottom" constant="39" id="rND-GU-qi3"/>
+                <constraint firstAttribute="centerX" secondItem="aCK-KD-efj" secondAttribute="centerX" id="sDp-UZ-tOs"/>
+                <constraint firstItem="oXl-QG-tZn" firstAttribute="top" secondItem="OaA-us-mgb" secondAttribute="bottom" constant="17" id="uYd-FF-4Kd"/>
+                <constraint firstAttribute="trailing" secondItem="x5b-u3-yyD" secondAttribute="trailing" id="wBW-c3-E0P"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
+    <resources>
+        <image name="Familyicon.png" width="18" height="16"/>
+        <image name="guide_addBaby.png" width="285" height="251"/>
+        <image name="navbar_i5.png" width="320" height="64"/>
+    </resources>
 </document>
