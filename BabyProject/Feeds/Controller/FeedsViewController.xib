@@ -13,8 +13,49 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.27232617599999998" green="0.4503188132" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="5rv-Ca-qn9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="ZSD-bD-Ade"/>
+                    </constraints>
+                </imageView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yUw-Lc-bs9">
+                    <rect key="frame" x="126" y="27" width="123" height="29"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.28235294119999998" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="OHi-Eq-7Uc"/>
+                        <constraint firstAttribute="width" constant="123" id="Qfx-27-d6R"/>
+                    </constraints>
+                    <segments>
+                        <segment title="精选"/>
+                        <segment title="关注"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </segmentedControl>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uRM-N5-4DN">
+                    <rect key="frame" x="337" y="30" width="25" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="BqP-9N-vjX"/>
+                        <constraint firstAttribute="height" constant="22" id="SUY-nF-zJ0"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="5rv-Ca-qn9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VwQ-Rd-uUj"/>
+                <constraint firstItem="yUw-Lc-bs9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="Yv4-Ru-FWy"/>
+                <constraint firstItem="uRM-N5-4DN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="jBh-S0-w24"/>
+                <constraint firstAttribute="centerX" secondItem="yUw-Lc-bs9" secondAttribute="centerX" id="jgZ-mE-Jf7"/>
+                <constraint firstItem="5rv-Ca-qn9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pPq-vT-JRv"/>
+                <constraint firstAttribute="trailing" secondItem="uRM-N5-4DN" secondAttribute="trailing" constant="13" id="uVr-PW-cuN"/>
+                <constraint firstAttribute="trailing" secondItem="5rv-Ca-qn9" secondAttribute="trailing" id="zPa-Ki-s3I"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="225.5" y="386.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="invicon.png" width="25" height="22"/>
+        <image name="navbar_i5.png" width="320" height="64"/>
+    </resources>
 </document>

@@ -62,7 +62,7 @@
 //        label.font = [UIFont systemFontOfSize:15];
 //        [itemImgV addSubview:label];
         
-        //设置默认第一个按钮为
+        //设置默认第二个按钮
         
         if (i==1) {
             itemImgV.image = nav.tabBarItem.selectedImage;
@@ -109,7 +109,7 @@
     //子视图控制器页面 的切换
     self.selectedIndex = tap.view.tag - 100;
     
-    
+    [self.delegate tabBarController:self didSelectViewController:self.selectedViewController];
     //    NSLog(@"%li", tap.view.tag);
     //    UIImageView *imgV = (UIImageView *)tap.view;
     

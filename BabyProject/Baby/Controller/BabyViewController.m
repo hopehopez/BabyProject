@@ -7,7 +7,8 @@
 //
 
 #import "BabyViewController.h"
-
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 @interface BabyViewController ()
 
 @end
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

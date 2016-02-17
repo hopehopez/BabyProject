@@ -7,6 +7,8 @@
 //
 
 #import "FeedsViewController.h"
+#import "SCNavTabBarController.h"
+#import "FeatureViewController.h"
 
 @interface FeedsViewController ()
 
@@ -17,6 +19,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBarHidden = YES;
+    [self prepareView];
+}
+
+- (void)prepareView{
+    
+    FeatureViewController *oneViewController = [[FeatureViewController alloc] init];
+    oneViewController.title = @"成长记录";
+    oneViewController.view.backgroundColor = [UIColor brownColor];
+    
+    FeatureViewController *twoViewController = [[FeatureViewController alloc] init];
+    twoViewController.title = @"用品";
+    twoViewController.view.backgroundColor = [UIColor purpleColor];
+    
+    FeatureViewController *threeViewController = [[FeatureViewController alloc] init];
+    threeViewController.title = @"玩具";
+    threeViewController.view.backgroundColor = [UIColor orangeColor];
+    
+    FeatureViewController *fourViewController = [[FeatureViewController alloc] init];
+    fourViewController.title = @"奶粉辅食";
+    fourViewController.view.backgroundColor = [UIColor magentaColor];
+    
+    
+    SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] init];
+    
+    navTabBarController.subViewControllers = @[oneViewController, twoViewController, threeViewController, fourViewController];
+    navTabBarController.view.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 );
+    [navTabBarController addParentController:self];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

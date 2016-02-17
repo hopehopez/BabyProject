@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessagesViewController">
             <connections>
+                <outlet property="tv" destination="fTY-2j-5YR" id="JV4-mZ-a3z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,8 +14,57 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bg_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-4Z-OeA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="1IW-UB-vtM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="qqW-g0-DEK"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消息中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb7-7J-Qb0">
+                    <rect key="frame" x="127" y="35" width="120" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="6u6-P4-WMo"/>
+                        <constraint firstAttribute="height" constant="21" id="AXu-7r-mP4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-2j-5YR">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="0.8929879839" green="0.4697716777" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="1IW-UB-vtM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6ta-5m-87y"/>
+                <constraint firstItem="kb7-7J-Qb0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="8Se-fb-3w8"/>
+                <constraint firstAttribute="trailing" secondItem="1IW-UB-vtM" secondAttribute="trailing" id="8q9-UZ-pdj"/>
+                <constraint firstItem="N3r-4Z-OeA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9zo-Bt-VjS"/>
+                <constraint firstItem="N3r-4Z-OeA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="C6M-g6-IU1"/>
+                <constraint firstAttribute="trailing" secondItem="fTY-2j-5YR" secondAttribute="trailing" id="CvR-yt-WYI"/>
+                <constraint firstAttribute="trailing" secondItem="N3r-4Z-OeA" secondAttribute="trailing" id="GAm-gN-HC7"/>
+                <constraint firstAttribute="bottom" secondItem="N3r-4Z-OeA" secondAttribute="bottom" id="Ik2-DH-VeH"/>
+                <constraint firstAttribute="bottom" secondItem="fTY-2j-5YR" secondAttribute="bottom" id="JWA-ZY-F5o"/>
+                <constraint firstItem="fTY-2j-5YR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JfH-OL-aMf"/>
+                <constraint firstItem="fTY-2j-5YR" firstAttribute="top" secondItem="kb7-7J-Qb0" secondAttribute="bottom" constant="8" symbolic="YES" id="OHa-yG-vE9"/>
+                <constraint firstAttribute="centerX" secondItem="kb7-7J-Qb0" secondAttribute="centerX" id="avo-F8-Iul"/>
+                <constraint firstAttribute="bottom" secondItem="N3r-4Z-OeA" secondAttribute="bottom" id="bfZ-rl-OVg"/>
+                <constraint firstItem="N3r-4Z-OeA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cJd-1S-3rL"/>
+                <constraint firstAttribute="trailing" secondItem="N3r-4Z-OeA" secondAttribute="trailing" id="cb6-Fm-8Cb"/>
+                <constraint firstItem="1IW-UB-vtM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gEV-l2-DE5"/>
+                <constraint firstItem="N3r-4Z-OeA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t2k-AI-mQN"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="359.5" y="316.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="cell_bg_h.png" width="320" height="25"/>
+        <image name="navbar_i5.png" width="320" height="64"/>
+    </resources>
 </document>

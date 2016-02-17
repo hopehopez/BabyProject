@@ -13,8 +13,8 @@
 #import "CameraViewController.h"
 #import "FeedsViewController.h"
 #import "MessagesViewController.h"
-#import "MainViewController.h"
-@interface AppDelegate (){
+
+@interface AppDelegate ()<UITabBarControllerDelegate>{
     //宝贝视图控制器
     BabyViewController *_babyController;
     UINavigationController *_babyNav;
@@ -35,8 +35,8 @@
     UINavigationController *_messagesNav;
     
     //主视图控制器
-    MainViewController *_mainController;
-    UINavigationController *_mainNav;
+//    MainViewController *_mainController;
+//    UINavigationController *_mainNav;
 }
 
 @end
@@ -116,18 +116,35 @@
     //添加标签控制器中的子控制器
     _mainController.viewControllers = @[_babyNav, _findNav, _cameraController, _feedsNav, _messagesNav];
     
+    _mainController.delegate = self;
+    
     return _mainController;
 }
 
+#pragma mark - 创建登录页
+- (void)setLoginView{
+    
+    NSInteger login = [ZSQStorage getLogin];
+    if (!login) {
+        LoginViewController *loginView = [[LoginViewController alloc] init];
+
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
+        [self.window.rootViewController presentViewController:nav animated:YES completion:^{
+            
+           }];
+    }
+    
+}
 
 #pragma mark - tabBar 代理
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     
     //每次选中tabBarItem  更新用户偏好
     [ZSQStorage setItemSelectedIndex:tabBarController.selectedIndex];
-    if (tabBarController.selectedIndex != 0) {
+    if (tabBarController.selectedIndex == 0) {
         [self setLoginView];
     }
+
 }
 
 #pragma mark - 注册通知 监听用户是否登录
@@ -144,10 +161,7 @@
     
     
 }
-#pragma mark - 创建登录页
-- (void)setLoginView{
-    
-}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

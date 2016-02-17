@@ -11,7 +11,7 @@
 @implementation RecommendModel
 
 + (JSONKeyMapper *)keyMapper{
-   return  [[JSONKeyMapper alloc ] initWithDictionary:@{@"id":@"ID"}];
+   return  [[JSONKeyMapper alloc ] initWithDictionary:@{@"ID":@"id"}];
 }
 
 @end

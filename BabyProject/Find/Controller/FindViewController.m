@@ -13,6 +13,7 @@
 #import "TopicCell.h"
 #import "PastTopicsViewController.h"
 #import "TopicActivityViewController.h"
+#import "TagFeedsViewController.h"
 @interface FindViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -139,6 +140,7 @@
     }else{
         RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendCell"];
         RecommendModel *model = _dataArray[2][indexPath.row - 2];
+        
         [cell setModel:model];
         return cell;
     }
@@ -167,7 +169,11 @@
         pastController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:pastController animated:YES];
     }else{
-        
+        TagFeedsViewController *feedsController = [[TagFeedsViewController alloc] init];
+        RecommendModel *model = _dataArray[2][indexPath.row - 2];
+        feedsController.ID = model.ID;
+        feedsController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:feedsController animated:YES];
     }
     
 }

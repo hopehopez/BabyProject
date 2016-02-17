@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "MainViewController.h"
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    //主视图控制器
+    //MainViewController *_mainController;
+    UINavigationController *_mainNav;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, strong) MainViewController *mainController;
 
 @end
 

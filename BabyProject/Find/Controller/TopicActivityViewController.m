@@ -9,7 +9,7 @@
 #define NUMBER 18
 
 #import "TopicActivityViewController.h"
-
+#import "HeadCell.h"
 @interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
@@ -26,46 +26,75 @@
     _page = 0;
     _dataArray = [NSMutableArray array];
     
+    [_dataArray addObject:self.model];
+    [_dataArray addObject:@""];
+    
     self.tv.delegate = self;
     self.tv.dataSource = self;
     
-    
-    
-    self.tv.tableHeaderView = self.headView;
-    
-    self.headView.hidden = YES;
-    //[self.headView removeFromSuperview];
-    
-    [self prepareView];
+    self.cv.hidden = YES;
+//    self.cv.delegate = self;
+//    self.cv.dataSource = self;
  
     [self registCell];
     
+    [self addRefresh];
+    
     [self loadData];
     
-}
-
-//填充头视图
-- (void)prepareView{
-    [self.imgV sd_setImageWithURL:[NSURL URLWithString:self.model.sampleImage] placeholderImage:nil options:SDWebImageRefreshCached];
-    self.nameLabel.text = self.model.name;
-    //self.countLabel.text = [NSString stringWithFormat:@"%@%@", self.model.accomplishedTimes, @"人次参与"];
-    self.descTxt.text = self.model.descriptionK;
-
 }
 
 #pragma mark - 注册cell
 - (void)registCell{
     UINib *nib = [UINib nibWithNibName:@"FeedCell" bundle:nil];
     [self.tv registerNib:nib forCellReuseIdentifier:@"FeedCell"];
+    
+    UINib *nib2 = [UINib nibWithNibName:@"CountCell" bundle:nil];
+    [self.tv registerNib:nib2 forCellReuseIdentifier:@"CountCell"];
+    
+    UINib *nib3 = [UINib nibWithNibName:@"HeadCell" bundle:nil];
+    [self.tv registerNib:nib3 forCellReuseIdentifier:@"HeadCell"];
+    
 }
+
+#pragma mark - 添加刷新
+- (void)addRefresh{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [_dataArray removeAllObjects];
+        [_dataArray addObject:self.model];
+        [_dataArray addObject:@""];
+        [self loadData];
+        [self.tv.header endRefreshing];
+    }];
+    
+    [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
+    
+    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    
+    self.tv.header = header;
+    
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _page++;
+        [self loadData];
+        [self.tv.footer endRefreshing];
+    }];
+    self.tv.footer = footer;
+}
+
 
 #pragma mark - 下载数据
 - (void)loadData{
     NSString *url = [NSString stringWithFormat:FIND_LATEST_TOPICS, self.model.addonId, _page * NUMBER];
     [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
         
+        
         NSDictionary *dict = data[@"data"];
-        self.countLabel.text = [NSString stringWithFormat:@"%@%@", dict[@"count"], @"人次参与"];
+        
+        NSNumber *countNum = dict[@"count"];
+        [_dataArray removeLastObject];
+        [_dataArray addObject:countNum.stringValue];
+        
         NSArray *feedsArray = dict[@"feeds"];
         for (NSDictionary *dict1 in feedsArray) {
             NSDictionary *feedDict = dict1[@"feed"];
@@ -83,22 +112,59 @@
     }];
 }
 
-#pragma mark - data Source
+#pragma mark - tv data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
     
-    FeedModel *model = _dataArray[indexPath.row];
-    [cell setModel:model];
-    return cell;
+    if (indexPath.row == 0) {
+        HeadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeadCell"];
+        [cell.imgv sd_setImageWithURL:[NSURL URLWithString:self.model.sampleImage] placeholderImage:nil options:SDWebImageRefreshCached];
+        cell.nameLabel.text = self.model.name;
+        cell.descLabel.text = self.model.descriptionK;
+        
+        return cell;
+    }else if(indexPath.row == 1){
+        CountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CountCell"];
+        if (_dataArray.count == 2) {
+            cell.coutLabel.text = nil;
+        }else {
+            NSString *countStr = _dataArray[1];
+            cell.coutLabel.text = [NSString stringWithFormat:@"%@%@", countStr, @"条记录"];
+        }
+        return cell;
+    }else{
+        FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
+        FeedModel *model = _dataArray[indexPath.row];
+        [cell setModel:model];
+        return cell;
+    }
 }
 
-#pragma mark delegate
+#pragma mark - tv delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 550;
+    if (indexPath.row == 0) {
+        ActivityModel *model = _dataArray[0];
+        NSString *str = model.descriptionK;
+        CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+        return size.height + 250;
+        
+    }else if (indexPath.row == 1){
+        return 50;
+    }else{
+        FeedModel *model = _dataArray[indexPath.row];
+        NSString *str = model.addonTitles;
+        CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+        return size.height + 520;
+    }
+    
 }
+
+//#pragma mark - cv delegate
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+//    return _dataArray[]
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

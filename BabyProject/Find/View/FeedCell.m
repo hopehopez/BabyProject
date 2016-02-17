@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.headPicImgV.layer.masksToBounds = YES;
+    self.headPicImgV.layer.cornerRadius = 20;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

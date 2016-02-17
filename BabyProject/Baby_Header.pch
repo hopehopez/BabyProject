@@ -35,7 +35,10 @@
 //网络接口地址
 #import "RequestURL.h"
 
-//FeedCell
+//自定义Cell
 #import "FeedCell.h"
+#import "CountCell.h"
+
+#import "LoginViewController.h"
 
 #endif

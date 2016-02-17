@@ -8,6 +8,7 @@
 
 #import "PastTopicsViewController.h"
 #import "TopicCell.h"
+#import "TopicActivityViewController.h"
 @interface PastTopicsViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSInteger _page;
     NSMutableArray *_dataArray;
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationController.navigationBar.hidden = self;
+    self.navigationController.navigationBar.hidden = YES;
     
     self.tabView.delegate = self;
     self.tabView.dataSource = self;
@@ -102,6 +103,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 170;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ActivityModel *model = _dataArray[indexPath.row];
+    TopicActivityViewController *topicController = [[TopicActivityViewController alloc] init];
+    topicController.hidesBottomBarWhenPushed = YES;
+    topicController.model = model;
+    [self.navigationController pushViewController:topicController animated:YES];
+
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
