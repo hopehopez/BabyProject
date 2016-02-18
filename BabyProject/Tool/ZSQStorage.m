@@ -32,7 +32,11 @@
 
 #pragma mark - 设置选中的item的index
 + (void)setItemSelectedIndex:(NSInteger)index{
-    [[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"itemSelected"];
+    
+    if (index!=2) {
+        [[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"itemSelected"];
+    }
+    
 }
 
 #pragma mark - 获取选中的item的index

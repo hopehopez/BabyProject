@@ -33,8 +33,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    //隐藏tabBar
     self.tabBarController.tabBar.hidden = YES;
-    
+    //隐藏状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 
 }
@@ -42,7 +43,7 @@
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
-    self.tabBarController.tabBar.hidden = NO;
+    
     if (initializeCamera){
         initializeCamera = NO;
         
@@ -55,8 +56,11 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [session stopRunning];
-    //    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //页面退出前显示tabBar和状态栏
+    self.tabBarController.tabBar.hidden = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 
@@ -64,8 +68,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController setNavigationBarHidden:YES];
+//    self.navigationController.navigationBarHidden = YES;
+//    [self.navigationController setNavigationBarHidden:YES];
     
     // Do any additional setup after loading the view.
     pickerDidShow = NO;
@@ -73,7 +77,7 @@
     FrontCamera = NO;
     self.captureImage.hidden = YES;
     
-    // Setup UIImagePicker Controller
+    // 创建 UIImagePicker Controller 获取图片的接口 对象
     imgPicker = [[UIImagePickerController alloc] init];
     imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imgPicker.delegate = self;
@@ -84,21 +88,26 @@
     initializeCamera = YES;
     photoFromCam = YES;
     
-    // Set auto-flash initially
+    // 闪光灯模式设置为自动
     self.flashToggleButton.tag = AVCaptureFlashModeAuto;
     
-    // Initialize Motion Manager
+    // 创建运动管理类对象  Motion Manager
     [self initializeMotionManager];
-
+    
+    //开启相机
+    [self initializeCamera];
     
 }
 
 #pragma mark - CoreMotion Task
 - (void)initializeMotionManager{
     motionManager = [[CMMotionManager alloc] init];
+    
+    //更新频率是100Hz
     motionManager.accelerometerUpdateInterval = .2;
     motionManager.gyroUpdateInterval = .2;
     
+    //push方式，更新数据
     [motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                         withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
                                             if (!error) {
@@ -192,16 +201,20 @@
 }
 #endif
 
-#pragma mark - Camera Initialization
+#pragma mark - 初始化相机
 
 //AVCaptureSession to show live video feed in view
 - (void) initializeCamera {
+    
+    //如果session 已存在 则销毁并重新创建
     if (session)
         [session release], session=nil;
     
     session = [[AVCaptureSession alloc] init];
+    //设置图片质量
     session.sessionPreset = AVCaptureSessionPresetPhoto;
     
+    //如果预览图层已存在 则销毁并重新创建
     if (captureVideoPreviewLayer)
         [captureVideoPreviewLayer release], captureVideoPreviewLayer=nil;
     
@@ -488,6 +501,8 @@
 }
 
 
+#pragma mark - button 点击事件
+
 - (IBAction)switchCamera:(UIButton *)sender {
     //switch cameras front and rear cameras
     // Stop current recording process
@@ -582,7 +597,12 @@
 //    }
     
     // Dismiss self view controller
+    [self dismissViewControllerAnimated:YES completion:^{
     
+//        self.tabBarController.selectedIndex = [ZSQStorage getItemSelectedIndex];
+    //self.tabBarController.selectedIndex = 1;
+    
+    }];
 
 }
 @end

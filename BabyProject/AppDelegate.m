@@ -10,7 +10,7 @@
 #import "GuidanceViewController.h"
 #import "BabyViewController.h"
 #import "FindViewController.h"
-#import "CameraViewController.h"
+#import "CameraBGViewController.h"
 #import "FeedsViewController.h"
 #import "MessagesViewController.h"
 
@@ -24,7 +24,7 @@
     UINavigationController *_findNav;
     
     //相机视图控制器
-    CameraViewController *_cameraController;
+    CameraBGViewController *_cameraController;
     
     //动态视图控制器
     FeedsViewController *_feedsController;
@@ -93,7 +93,7 @@
     _findNav.tabBarItem = findItem;
     
     //创建相机视图控制器
-    _cameraController = [[CameraViewController alloc] init];
+    _cameraController = [[CameraBGViewController alloc] init];
     UITabBarItem *cameraItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"tabbar_camera"] selectedImage:[UIImage imageNamed:@"tabbar_camera"] ];
     _cameraController.tabBarItem = cameraItem;
     
