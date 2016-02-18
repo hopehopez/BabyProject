@@ -52,6 +52,20 @@
 		7CA88B281C74D27900F76ABA /* AddBabyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA88B261C74D27900F76ABA /* AddBabyViewController.xib */; };
 		7CA88B2B1C74D79300F76ABA /* btn_bg_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA88B291C74D79300F76ABA /* btn_bg_disable@2x.png */; };
 		7CA88B2C1C74D79300F76ABA /* btn_bg_disable@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA88B2A1C74D79300F76ABA /* btn_bg_disable@3x.png */; };
+		BC1BFA1C1C75DD890066D661 /* camera_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA1A1C75DD890066D661 /* camera_back@2x.png */; };
+		BC1BFA1D1C75DD890066D661 /* camera_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA1B1C75DD890066D661 /* camera_back@3x.png */; };
+		BC1BFA241C75DDA40066D661 /* camera_flash_auto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA1E1C75DDA40066D661 /* camera_flash_auto@2x.png */; };
+		BC1BFA251C75DDA40066D661 /* camera_flash_auto@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA1F1C75DDA40066D661 /* camera_flash_auto@3x.png */; };
+		BC1BFA261C75DDA40066D661 /* camera_flash_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA201C75DDA40066D661 /* camera_flash_off@2x.png */; };
+		BC1BFA271C75DDA40066D661 /* camera_flash_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA211C75DDA40066D661 /* camera_flash_off@3x.png */; };
+		BC1BFA281C75DDA40066D661 /* camera_flash_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA221C75DDA40066D661 /* camera_flash_on@2x.png */; };
+		BC1BFA291C75DDA40066D661 /* camera_flash_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA231C75DDA40066D661 /* camera_flash_on@3x.png */; };
+		BC1BFA2E1C75DDCC0066D661 /* camera_flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA2A1C75DDCC0066D661 /* camera_flip@2x.png */; };
+		BC1BFA2F1C75DDCC0066D661 /* camera_flip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA2B1C75DDCC0066D661 /* camera_flip@3x.png */; };
+		BC1BFA301C75DDCC0066D661 /* camera_library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA2C1C75DDCC0066D661 /* camera_library@2x.png */; };
+		BC1BFA311C75DDCC0066D661 /* camera_library@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA2D1C75DDCC0066D661 /* camera_library@3x.png */; };
+		BC1BFA341C75DDEA0066D661 /* camera_trigger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA321C75DDEA0066D661 /* camera_trigger@2x.png */; };
+		BC1BFA351C75DDEA0066D661 /* camera_trigger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1BFA331C75DDEA0066D661 /* camera_trigger@3x.png */; };
 		BC416F261C71B37400A65C05 /* BaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F251C71B37400A65C05 /* BaseHttpClient.m */; };
 		BC416F421C71B39100A65C05 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2B1C71B39100A65C05 /* JSONModel.m */; };
 		BC416F431C71B39100A65C05 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2D1C71B39100A65C05 /* JSONModelArray.m */; };
@@ -280,6 +294,20 @@
 		7CA88B261C74D27900F76ABA /* AddBabyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBabyViewController.xib; sourceTree = "<group>"; };
 		7CA88B291C74D79300F76ABA /* btn_bg_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bg_disable@2x.png"; sourceTree = "<group>"; };
 		7CA88B2A1C74D79300F76ABA /* btn_bg_disable@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bg_disable@3x.png"; sourceTree = "<group>"; };
+		BC1BFA1A1C75DD890066D661 /* camera_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_back@2x.png"; sourceTree = "<group>"; };
+		BC1BFA1B1C75DD890066D661 /* camera_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_back@3x.png"; sourceTree = "<group>"; };
+		BC1BFA1E1C75DDA40066D661 /* camera_flash_auto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_auto@2x.png"; sourceTree = "<group>"; };
+		BC1BFA1F1C75DDA40066D661 /* camera_flash_auto@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_auto@3x.png"; sourceTree = "<group>"; };
+		BC1BFA201C75DDA40066D661 /* camera_flash_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_off@2x.png"; sourceTree = "<group>"; };
+		BC1BFA211C75DDA40066D661 /* camera_flash_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_off@3x.png"; sourceTree = "<group>"; };
+		BC1BFA221C75DDA40066D661 /* camera_flash_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_on@2x.png"; sourceTree = "<group>"; };
+		BC1BFA231C75DDA40066D661 /* camera_flash_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flash_on@3x.png"; sourceTree = "<group>"; };
+		BC1BFA2A1C75DDCC0066D661 /* camera_flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flip@2x.png"; sourceTree = "<group>"; };
+		BC1BFA2B1C75DDCC0066D661 /* camera_flip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_flip@3x.png"; sourceTree = "<group>"; };
+		BC1BFA2C1C75DDCC0066D661 /* camera_library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_library@2x.png"; sourceTree = "<group>"; };
+		BC1BFA2D1C75DDCC0066D661 /* camera_library@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_library@3x.png"; sourceTree = "<group>"; };
+		BC1BFA321C75DDEA0066D661 /* camera_trigger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_trigger@2x.png"; sourceTree = "<group>"; };
+		BC1BFA331C75DDEA0066D661 /* camera_trigger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_trigger@3x.png"; sourceTree = "<group>"; };
 		BC416F241C71B37400A65C05 /* BaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHttpClient.h; sourceTree = "<group>"; };
 		BC416F251C71B37400A65C05 /* BaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHttpClient.m; sourceTree = "<group>"; };
 		BC416F271C71B37F00A65C05 /* RequestURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestURL.h; sourceTree = "<group>"; };
@@ -589,6 +617,27 @@
 				7CA88AFC1C74C9B200F76ABA /* default_baby@3x.png */,
 			);
 			path = Baby;
+			sourceTree = "<group>";
+		};
+		BC1BFA191C75DD4C0066D661 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				BC1BFA321C75DDEA0066D661 /* camera_trigger@2x.png */,
+				BC1BFA331C75DDEA0066D661 /* camera_trigger@3x.png */,
+				BC1BFA2A1C75DDCC0066D661 /* camera_flip@2x.png */,
+				BC1BFA2B1C75DDCC0066D661 /* camera_flip@3x.png */,
+				BC1BFA2C1C75DDCC0066D661 /* camera_library@2x.png */,
+				BC1BFA2D1C75DDCC0066D661 /* camera_library@3x.png */,
+				BC1BFA1E1C75DDA40066D661 /* camera_flash_auto@2x.png */,
+				BC1BFA1F1C75DDA40066D661 /* camera_flash_auto@3x.png */,
+				BC1BFA201C75DDA40066D661 /* camera_flash_off@2x.png */,
+				BC1BFA211C75DDA40066D661 /* camera_flash_off@3x.png */,
+				BC1BFA221C75DDA40066D661 /* camera_flash_on@2x.png */,
+				BC1BFA231C75DDA40066D661 /* camera_flash_on@3x.png */,
+				BC1BFA1A1C75DD890066D661 /* camera_back@2x.png */,
+				BC1BFA1B1C75DD890066D661 /* camera_back@3x.png */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		BC416F221C71B32B00A65C05 /* Libs */ = {
@@ -953,6 +1002,7 @@
 				BCB34D861C748E9F00FE9C1F /* Login&Regist */,
 				7CA88AF51C74C91B00F76ABA /* Baby */,
 				BCAC2E031C71A3D100AD6A3E /* find */,
+				BC1BFA191C75DD4C0066D661 /* Camera */,
 				BCB34D6C1C7461F500FE9C1F /* Feeds */,
 				BCAC2D931C71741B00AD6A3E /* TabBar */,
 			);
@@ -1402,7 +1452,9 @@
 				BCC782F11C72F20B00671A21 /* TopicCell.xib in Resources */,
 				7CA243831C736B6600F5F88C /* baby_poi@2x.png in Resources */,
 				BCAC2DB71C71741B00AD6A3E /* tabbar_bg@2x.png in Resources */,
+				BC1BFA351C75DDEA0066D661 /* camera_trigger@3x.png in Resources */,
 				BCB34D681C745FBF00FE9C1F /* SCNavTabBar.bundle in Resources */,
+				BC1BFA291C75DDA40066D661 /* camera_flash_on@3x.png in Resources */,
 				BCAC2E091C71A3FB00AD6A3E /* navbar_i5@3x.png in Resources */,
 				BCC783101C733CD800671A21 /* btn_menu_n@2x.png in Resources */,
 				BCB34D951C748FFD00FE9C1F /* btn_login_qq_n@2x.png in Resources */,
@@ -1418,6 +1470,7 @@
 				7CA88B171C74CB1A00F76ABA /* register_boy_h@3x.png in Resources */,
 				BC77A1951C71EDA8002B6421 /* RecommendCell.xib in Resources */,
 				BC77A1991C71F6B7002B6421 /* default_feed@3x.png in Resources */,
+				BC1BFA311C75DDCC0066D661 /* camera_library@3x.png in Resources */,
 				BCAC2DB81C71741B00AD6A3E /* tabbar_camera@2x.png in Resources */,
 				7CA88B0C1C74CB0400F76ABA /* qiandao@2x.png in Resources */,
 				BCB34C9A1C73FD8300FE9C1F /* TagFeedsViewController.xib in Resources */,
@@ -1442,6 +1495,7 @@
 				7CA88B081C74CAC400F76ABA /* guide_addPhoto@2x.png in Resources */,
 				7CA243881C736D3200F5F88C /* btn_comment@3x.png in Resources */,
 				BCB34DA51C74905400FE9C1F /* btn_login_wechat_n@2x.png in Resources */,
+				BC1BFA341C75DDEA0066D661 /* camera_trigger@2x.png in Resources */,
 				7CA88B1D1C74CB1A00F76ABA /* register_girl_n@3x.png in Resources */,
 				BCB34D8D1C748EAF00FE9C1F /* btn_unsecureSwitch@2x.png in Resources */,
 				7CA88B2C1C74D79300F76ABA /* btn_bg_disable@3x.png in Resources */,
@@ -1453,21 +1507,26 @@
 				BCB34DAA1C7490B200FE9C1F /* logo@3x.png in Resources */,
 				7CA88B0D1C74CB0400F76ABA /* qiandao@3x.png in Resources */,
 				7CA88AFE1C74C9B200F76ABA /* default_baby@2x.png in Resources */,
+				BC1BFA271C75DDA40066D661 /* camera_flash_off@3x.png in Resources */,
 				BCAC2E0F1C71AB5100AD6A3E /* searchicon@3x.png in Resources */,
 				BCAC2DA71C71741B00AD6A3E /* tabbar_1a@2x.png in Resources */,
 				BCAC2DB51C71741B00AD6A3E /* tabbar_4b@2x.png in Resources */,
 				BCB34D8E1C748EAF00FE9C1F /* btn_unsecureSwitch@3x.png in Resources */,
 				7CA2439C1C736DBD00F5F88C /* gender_boy@3x.png in Resources */,
+				BC1BFA2E1C75DDCC0066D661 /* camera_flip@2x.png in Resources */,
 				BCB34DA21C74905400FE9C1F /* btn_login_other@2x.png in Resources */,
 				7CA243A31C737CC300F5F88C /* CountCell.xib in Resources */,
 				BCB34D9F1C74905400FE9C1F /* btn_login_ignore@3x.png in Resources */,
 				7CA243871C736D3200F5F88C /* btn_comment@2x.png in Resources */,
+				BC1BFA281C75DDA40066D661 /* camera_flash_on@2x.png in Resources */,
 				BCAC2D6F1C71737900AD6A3E /* LaunchScreen.xib in Resources */,
 				7CA243781C73658300F5F88C /* FeedCell.xib in Resources */,
 				7CA243841C736B6600F5F88C /* baby_poi@3x.png in Resources */,
 				BC77A19B1C71FE47002B6421 /* cell_bg_h@2x.png in Resources */,
 				BC77A18C1C71EAB8002B6421 /* ActivityCell.xib in Resources */,
+				BC1BFA2F1C75DDCC0066D661 /* camera_flip@3x.png in Resources */,
 				BCB34DA91C7490B200FE9C1F /* logo@2x.png in Resources */,
+				BC1BFA251C75DDA40066D661 /* camera_flash_auto@3x.png in Resources */,
 				BCAC2DAA1C71741B00AD6A3E /* tabbar_1b@3x.png in Resources */,
 				7CA88AFF1C74C9B200F76ABA /* default_baby@3x.png in Resources */,
 				BCB34DA41C74905400FE9C1F /* btn_login_sina_n@3x.png in Resources */,
@@ -1490,12 +1549,15 @@
 				BCB34D7A1C74711200FE9C1F /* FeatureViewController.xib in Resources */,
 				7CA2439D1C736DBD00F5F88C /* gender_girl@2x.png in Resources */,
 				BCC782FB1C73030000671A21 /* PastTopicsViewController.xib in Resources */,
+				BC1BFA1C1C75DD890066D661 /* camera_back@2x.png in Resources */,
 				BCAC2DAC1C71741B00AD6A3E /* tabbar_2a@3x.png in Resources */,
 				BCB34DA01C74905400FE9C1F /* btn_login_n@2x.png in Resources */,
+				BC1BFA301C75DDCC0066D661 /* camera_library@2x.png in Resources */,
 				BCAC2DA91C71741B00AD6A3E /* tabbar_1b@2x.png in Resources */,
 				BCB34DAF1C74946D00FE9C1F /* RegisterViewController.xib in Resources */,
 				7CA88B161C74CB1A00F76ABA /* register_boy_h@2x.png in Resources */,
 				BCAC2DB01C71741B00AD6A3E /* tabbar_3a@3x.png in Resources */,
+				BC1BFA261C75DDA40066D661 /* camera_flash_off@2x.png in Resources */,
 				7CA88B191C74CB1A00F76ABA /* register_boy_n@3x.png in Resources */,
 				BCAC2DB61C71741B00AD6A3E /* tabbar_4b@3x.png in Resources */,
 				BCAC2D6C1C71737900AD6A3E /* Images.xcassets in Resources */,
@@ -1506,9 +1568,11 @@
 				BCAC2DB41C71741B00AD6A3E /* tabbar_4a@3x.png in Resources */,
 				BCAC2DF51C717FEA00AD6A3E /* FeedsViewController.xib in Resources */,
 				7CA88B181C74CB1A00F76ABA /* register_boy_n@2x.png in Resources */,
+				BC1BFA1D1C75DD890066D661 /* camera_back@3x.png in Resources */,
 				BCB34D7E1C747A9900FE9C1F /* feed_jing@3x.png in Resources */,
 				7CA88B1B1C74CB1A00F76ABA /* register_girl_h@3x.png in Resources */,
 				BCB34D8B1C748EAF00FE9C1F /* btn_secureSwitch@2x.png in Resources */,
+				BC1BFA241C75DDA40066D661 /* camera_flash_auto@2x.png in Resources */,
 				BCC783191C733D1B00671A21 /* btn_list_n@3x.png in Resources */,
 				BCC782EC1C72EB6900671A21 /* loading.gif in Resources */,
 				BCC783161C733D1B00671A21 /* btn_list_h@2x.png in Resources */,

@@ -98,21 +98,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
-    FeedModel *model = _dataArray[indexPath.row];
-    cell.jingImagV.hidden = NO;
-    [cell setModel:model];
+    if (_dataArray.count>0) {
+        FeedModel *model = _dataArray[indexPath.row];
+        cell.jingImagV.hidden = NO;
+        [cell setModel:model];
+        
+    }
     return cell;
     
 }
 
 #pragma mark delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FeedModel *model = _dataArray[indexPath.row];
-    NSString *str = model.addonTitles;
-    CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
-    return size.height + 520;
-    
+    if (_dataArray.count>0) {
+        FeedModel *model = _dataArray[indexPath.row];
+        NSString *str = model.addonTitles;
+        CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+        return size.height + 520;
+
+    }
+    return 550;
 }
 
 - (void)didReceiveMemoryWarning {

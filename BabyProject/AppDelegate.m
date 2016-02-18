@@ -129,6 +129,7 @@
         LoginViewController *loginView = [[LoginViewController alloc] init];
 
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
+        
         [self.window.rootViewController presentViewController:nav animated:YES completion:^{
             
            }];

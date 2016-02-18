@@ -2,10 +2,20 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
             <connections>
+                <outlet property="cameraToggleButton" destination="608-Gx-tAo" id="mD2-ed-COL"/>
+                <outlet property="cancelButton" destination="gOS-Qb-AC8" id="Bi6-ti-DDr"/>
+                <outlet property="captureImage" destination="PLe-lw-boR" id="XOX-r5-BrG"/>
+                <outlet property="flashToggleButton" destination="GKJ-rL-Zv9" id="FSK-RA-c6Z"/>
+                <outlet property="imagePreview" destination="N6W-mI-wil" id="psq-gy-PqE"/>
+                <outlet property="libraryToggleButton" destination="iZ2-4W-V1k" id="hfS-Cc-yVZ"/>
+                <outlet property="photoBar" destination="SgK-8f-iHc" id="d4h-12-C5b"/>
+                <outlet property="photoCaptureButton" destination="dfk-Bp-aul" id="Jdi-XQ-5NE"/>
+                <outlet property="topBar" destination="2v9-gM-34h" id="hcq-hF-nI5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,8 +23,137 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.57121463829999997" green="1" blue="0.1000971111" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6W-mI-wil">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="N6W-mI-wil" secondAttribute="height" multiplier="1:1" id="zSI-v9-tl6"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PLe-lw-boR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PLe-lw-boR" secondAttribute="height" multiplier="1:1" id="rPT-tr-HDb"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2v9-gM-34h">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="608-Gx-tAo">
+                            <rect key="frame" x="320" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="29" id="IQ6-Ol-kqi"/>
+                                <constraint firstAttribute="height" constant="29" id="JN8-ku-hGR"/>
+                            </constraints>
+                            <state key="normal" image="camera_flip.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="switchCamera:" destination="-1" eventType="touchUpInside" id="91A-2p-2hY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKJ-rL-Zv9">
+                            <rect key="frame" x="19" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="heX-BC-fPY"/>
+                                <constraint firstAttribute="width" constant="29" id="iuS-N4-pBp"/>
+                            </constraints>
+                            <state key="normal" image="camera_flash_auto.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="camera_flash_on.png"/>
+                            <connections>
+                                <action selector="toggleFlash:" destination="-1" eventType="touchUpInside" id="qbP-e5-dJ5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="GKJ-rL-Zv9" firstAttribute="centerY" secondItem="2v9-gM-34h" secondAttribute="centerY" id="Lw0-n3-R1N"/>
+                        <constraint firstItem="GKJ-rL-Zv9" firstAttribute="top" secondItem="608-Gx-tAo" secondAttribute="top" id="Pl3-Vr-ghu"/>
+                        <constraint firstItem="GKJ-rL-Zv9" firstAttribute="leading" secondItem="2v9-gM-34h" secondAttribute="leading" constant="19" id="UdA-y6-i5L"/>
+                        <constraint firstAttribute="height" constant="61" id="gKl-Ef-3Ut"/>
+                        <constraint firstAttribute="trailing" secondItem="608-Gx-tAo" secondAttribute="trailing" constant="26" id="orO-BY-4J3"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SgK-8f-iHc">
+                    <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOS-Qb-AC8">
+                            <rect key="frame" x="30" y="39" width="34" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="7fI-KZ-UrC"/>
+                                <constraint firstAttribute="width" constant="34" id="hs2-a7-9rf"/>
+                            </constraints>
+                            <state key="normal" image="camera_back.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="-1" eventType="touchUpInside" id="70a-ye-by5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ2-4W-V1k">
+                            <rect key="frame" x="309" y="37" width="34" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="nsU-gj-fAh"/>
+                                <constraint firstAttribute="width" constant="34" id="pdJ-rn-aeR"/>
+                            </constraints>
+                            <state key="normal" image="camera_library.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="switchToLibrary:" destination="-1" eventType="touchUpInside" id="QI3-4K-OQ4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfk-Bp-aul">
+                            <rect key="frame" x="147" y="14" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="Spz-in-SpL"/>
+                                <constraint firstAttribute="height" constant="80" id="ciN-ky-obd"/>
+                            </constraints>
+                            <state key="normal" image="camera_trigger.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="snapImage:" destination="-1" eventType="touchUpInside" id="1Kr-pg-PRi"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="gOS-Qb-AC8" firstAttribute="leading" secondItem="SgK-8f-iHc" secondAttribute="leading" constant="30" id="1Es-ma-bvv"/>
+                        <constraint firstItem="iZ2-4W-V1k" firstAttribute="top" secondItem="SgK-8f-iHc" secondAttribute="top" constant="37" id="F2V-vn-lQc"/>
+                        <constraint firstItem="dfk-Bp-aul" firstAttribute="top" secondItem="SgK-8f-iHc" secondAttribute="top" constant="14" id="JB3-c2-kw6"/>
+                        <constraint firstAttribute="centerX" secondItem="dfk-Bp-aul" secondAttribute="centerX" id="RyX-b3-Xf2"/>
+                        <constraint firstAttribute="trailing" secondItem="iZ2-4W-V1k" secondAttribute="trailing" constant="32" id="aKO-uY-LUh"/>
+                        <constraint firstItem="gOS-Qb-AC8" firstAttribute="top" secondItem="SgK-8f-iHc" secondAttribute="top" constant="39" id="bnN-HN-EVI"/>
+                        <constraint firstAttribute="height" constant="100" id="xkp-Lu-eef"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PLe-lw-boR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4z9-jD-LOm"/>
+                <constraint firstItem="SgK-8f-iHc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gs9-Ph-Uj8"/>
+                <constraint firstAttribute="trailing" secondItem="N6W-mI-wil" secondAttribute="trailing" id="WxF-87-V1M"/>
+                <constraint firstAttribute="trailing" secondItem="SgK-8f-iHc" secondAttribute="trailing" id="X8H-3M-ckx"/>
+                <constraint firstItem="2v9-gM-34h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yg8-vU-EWO"/>
+                <constraint firstItem="PLe-lw-boR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e2C-mE-ogv"/>
+                <constraint firstItem="2v9-gM-34h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h0M-kD-gFB"/>
+                <constraint firstAttribute="bottom" secondItem="SgK-8f-iHc" secondAttribute="bottom" id="hIc-Oe-2nt"/>
+                <constraint firstItem="N6W-mI-wil" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iUv-CI-byI"/>
+                <constraint firstItem="N6W-mI-wil" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="itc-zX-dB1"/>
+                <constraint firstAttribute="trailing" secondItem="PLe-lw-boR" secondAttribute="trailing" id="ivp-7N-mb5"/>
+                <constraint firstAttribute="trailing" secondItem="2v9-gM-34h" secondAttribute="trailing" id="jRR-GW-eCc"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera_back.png" width="34" height="34"/>
+        <image name="camera_flash_auto.png" width="29" height="29"/>
+        <image name="camera_flash_on.png" width="29" height="29"/>
+        <image name="camera_flip.png" width="29" height="29"/>
+        <image name="camera_library.png" width="34" height="34"/>
+        <image name="camera_trigger.png" width="80" height="80"/>
+    </resources>
 </document>

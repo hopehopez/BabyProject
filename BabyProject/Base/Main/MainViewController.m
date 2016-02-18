@@ -23,22 +23,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //[self.tabBar setBackgroundImage:[UIImage imageNamed:@"cell_bg_n"]];
-    [self.tabBar setBackgroundColor:[UIColor whiteColor]];
+ //   [self.tabBar setBackgroundColor:[UIColor whiteColor]];
+//    self.tabBar.tintColor = [UIColor whiteColor];
+//    self.tabBar.barTintColor = [UIColor whiteColor];
 }
 
 #pragma mark - 隐藏系统tabBar上的子视图
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //获得标签栏上的所有子视图
-    NSArray *subViewsArray = self.tabBar.subviews;
-    for (UIView *view in subViewsArray) {
-        view.hidden = YES;
-    }
+//    NSArray *subViewsArray = self.tabBar.subviews;
+//    
+//    static NSInteger count = 0;
+//    count++;
+//    for (UIView *view in subViewsArray) {
+//        if ([view isKindOfClass:UITabBarButton.class]) {
+//            view.hidden = YES;
+//        }
+//        
+//    }
 }
 
 #pragma mark - 创建导航条按钮 添加到tabBar上
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    NSArray *subViewsArray = self.tabBar.subviews;
+    
+    static NSInteger count = 0;
+    count++;
+    
+    for (int i=0; i<subViewsArray.count; i++) {
+        if (count>=1&&i==0) {
+            continue;
+        }
+        UIView *subView = subViewsArray[i];
+        if (i==6) {
+            continue;
+        }
+        subView.hidden = YES;
+    }
+    
     
     NSArray *array = self.viewControllers;
     float margin = (SCREEN_WIDTH - 25 * 4 - 38)/6;

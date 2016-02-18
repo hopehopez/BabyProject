@@ -61,8 +61,10 @@
 }
 
 - (IBAction)ignoreLogin:(id)sender {
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [ZSQStorage setItemSelectedIndex:1];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
 }
 @end
