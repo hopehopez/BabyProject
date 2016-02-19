@@ -23,6 +23,9 @@
 #define FIND_LATEST_TOPICS @"http://api.xiaobudian.me/childhood/api/feeds/addon/%@?from=%ld&size=18"
 //TagFeeds
 #define FIND_TAG_FEEDS @"http://api.xiaobudian.me/childhood/api/feeds/tag/%@?from=%ld&size=20"
+//相片评论
+#define PHOTO_COMMENTS @"http://api.xiaobudian.me/childhood/api/feeds/%@/comments?page=%ld&size=20"
+
 
 ////动态_精选
 #define FEEDS_FEATURE  @"http://api.xiaobudian.me/childhood/api/featured/categories/%@/feeds?from=%ld&size=20"

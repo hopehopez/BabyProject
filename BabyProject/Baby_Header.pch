@@ -39,7 +39,9 @@
 #import "FeedCell.h"
 #import "CountCell.h"
 
+//常用controller
 #import "LoginViewController.h"
 #import "CameraViewController.h"
+#import "PhotoDetailViewController.h"
 
 #endif

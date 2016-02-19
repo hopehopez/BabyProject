@@ -8,12 +8,13 @@
 
 #import "JSONModel.h"
 
-@interface CommentModel : JSONModel
+@interface CommentModel1 : JSONModel
+
 @property (nonatomic, copy) NSString <Optional> *cid;
 @property (nonatomic, copy) NSString <Optional> *content;
 @property (nonatomic, copy) NSString <Optional> *feedId;
 @property (nonatomic, copy) NSString <Optional> *headPic;
-@property (nonatomic, copy) NSString <Optional> *id;
+@property (nonatomic, copy) NSString <Optional> *ID;
 @property (nonatomic, copy) NSString <Optional> *nickName;
 @property (nonatomic, copy) NSString <Optional> *publishDate;
 @property (nonatomic, copy) NSString <Optional> *removed;

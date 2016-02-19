@@ -74,7 +74,7 @@
 		BC1F683F1C7732E7004D7026 /* sharebig@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F683D1C7732E7004D7026 /* sharebig@3x.png */; };
 		BC1F68431C773546004D7026 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F68411C773546004D7026 /* CommentCell.m */; };
 		BC1F68441C773546004D7026 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F68421C773546004D7026 /* CommentCell.xib */; };
-		BC1F68471C774638004D7026 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F68461C774638004D7026 /* CommentModel.m */; };
+		BC1F68471C774638004D7026 /* CommentModel1.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F68461C774638004D7026 /* CommentModel1.m */; };
 		BC416F261C71B37400A65C05 /* BaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F251C71B37400A65C05 /* BaseHttpClient.m */; };
 		BC416F421C71B39100A65C05 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2B1C71B39100A65C05 /* JSONModel.m */; };
 		BC416F431C71B39100A65C05 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2D1C71B39100A65C05 /* JSONModelArray.m */; };
@@ -330,8 +330,8 @@
 		BC1F68401C773546004D7026 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		BC1F68411C773546004D7026 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		BC1F68421C773546004D7026 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		BC1F68451C774638004D7026 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
-		BC1F68461C774638004D7026 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		BC1F68451C774638004D7026 /* CommentModel1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel1.h; sourceTree = "<group>"; };
+		BC1F68461C774638004D7026 /* CommentModel1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel1.m; sourceTree = "<group>"; };
 		BC416F241C71B37400A65C05 /* BaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHttpClient.h; sourceTree = "<group>"; };
 		BC416F251C71B37400A65C05 /* BaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHttpClient.m; sourceTree = "<group>"; };
 		BC416F271C71B37F00A65C05 /* RequestURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestURL.h; sourceTree = "<group>"; };
@@ -929,8 +929,8 @@
 				BC77A1861C71D670002B6421 /* RecommendModel.m */,
 				BCC7831A1C734FE300671A21 /* FeedModel.h */,
 				BCC7831B1C734FE300671A21 /* FeedModel.m */,
-				BC1F68451C774638004D7026 /* CommentModel.h */,
-				BC1F68461C774638004D7026 /* CommentModel.m */,
+				BC1F68451C774638004D7026 /* CommentModel1.h */,
+				BC1F68461C774638004D7026 /* CommentModel1.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1656,7 +1656,7 @@
 				BC416F481C71B39100A65C05 /* JSONHTTPClient.m in Sources */,
 				BC416FB21C71B3C600A65C05 /* MKAnnotationView+WebCache.m in Sources */,
 				BC416F851C71B3BB00A65C05 /* MJRefreshBackGifFooter.m in Sources */,
-				BC1F68471C774638004D7026 /* CommentModel.m in Sources */,
+				BC1F68471C774638004D7026 /* CommentModel1.m in Sources */,
 				BC416FB91C71B3C600A65C05 /* SDWebImageManager.m in Sources */,
 				7CA243A21C737CC300F5F88C /* CountCell.m in Sources */,
 				BCB34D6A1C745FBF00FE9C1F /* SCNavTabBar.m in Sources */,

@@ -11,7 +11,7 @@
 @implementation FeedModel
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"ID": @"id"}];
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"id": @"ID"}];
 }
 
 @end

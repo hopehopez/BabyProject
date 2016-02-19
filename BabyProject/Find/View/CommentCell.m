@@ -12,12 +12,20 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.imageView.layer.masksToBounds = YES;
+    self.imageView.layer.cornerRadius = 15;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setModel:(CommentModel1 *)model{
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.headPic] placeholderImage:nil options:SDWebImageRefreshCached];
+    self.nameLabel.text = model.nickName;
+    self.commentLabel.text = model.content;
 }
 
 @end

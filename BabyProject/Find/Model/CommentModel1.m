@@ -6,12 +6,12 @@
 //  Copyright © 2016年 zsq. All rights reserved.
 //
 
-#import "CommentModel.h"
+#import "CommentModel1.h"
 
-@implementation CommentModel
+@implementation CommentModel1
 
 + (JSONKeyMapper *)keyMapper{
-    return  [[JSONKeyMapper alloc ] initWithDictionary:@{@"ID":@"id"}];
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"id": @"ID"}];
 }
 
 @end

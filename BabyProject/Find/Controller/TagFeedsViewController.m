@@ -141,6 +141,14 @@
         return size.height + 520;
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    [mArray removeObjectAtIndex:0];
+    photoController.feedsArray = mArray;
+    
+    [self.navigationController pushViewController:photoController animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
