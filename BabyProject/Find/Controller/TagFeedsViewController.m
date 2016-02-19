@@ -164,5 +164,10 @@
     
 }
 - (IBAction)addClick:(id)sender {
+    
+    CameraViewController *cameraController = [[CameraViewController alloc] init];
+    [self.tabBarController presentViewController:cameraController animated:YES completion:nil];
+
+    
 }
 @end

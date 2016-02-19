@@ -202,7 +202,6 @@
 #endif
 
 #pragma mark - 初始化相机
-
 //AVCaptureSession to show live video feed in view
 - (void) initializeCamera {
     
@@ -219,9 +218,11 @@
         [captureVideoPreviewLayer release], captureVideoPreviewLayer=nil;
     
     captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    //设置显示范围
     [captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     captureVideoPreviewLayer.frame = self.imagePreview.bounds;
+    //将预览图层贴到 视图控制器的imageView
     [self.imagePreview.layer addSublayer:captureVideoPreviewLayer];
     
     UIView *view = [self imagePreview];
@@ -231,11 +232,14 @@
     CGRect bounds = [view bounds];
     [captureVideoPreviewLayer setFrame:bounds];
     
+    //获取可用拍摄设备数组
     NSArray *devices = [AVCaptureDevice devices];
+    //前置摄像头
     AVCaptureDevice *frontCamera=nil;
+    //后置摄像头
     AVCaptureDevice *backCamera=nil;
     
-    // check if device available
+    // 检查是否有设备可用 数组为0 即不可用
     if (devices.count==0) {
         NSLog(@"No Camera Available");
         [self disableCameraDeviceControls];
@@ -247,7 +251,7 @@
         NSLog(@"Device name: %@", [device localizedName]);
         
         if ([device hasMediaType:AVMediaTypeVideo]) {
-            
+            //根据设备的位置信息 分别为捕捉设备赋值
             if ([device position] == AVCaptureDevicePositionBack) {
                 NSLog(@"Device position : back");
                 backCamera = device;
@@ -258,11 +262,16 @@
             }
         }
     }
-    
+    //设置后置摄像头
     if (!FrontCamera) {
         
+        //如果设备有闪关灯
         if ([backCamera hasFlash]){
+            //设置设备锁
+            //为了AVCaptureDevice设置硬件属性,如focusMode exposureMode,客户必须先在设备上获得一个锁。客户应该只持有设备锁如果他们需要可设置的设备属性保持不变。持有不必要的设备锁在其他应用程序中可能降低捕获质量共享设备。
             [backCamera lockForConfiguration:nil];
+            
+            //根据tag值 设置闪光灯模式
             if (self.flashToggleButton.tag==AVCaptureFlashModeAuto){
                 [backCamera setFlashMode:AVCaptureFlashModeAuto];
             }
@@ -272,6 +281,7 @@
             else{
                 [backCamera setFlashMode:AVCaptureFlashModeOff];
             }
+            //打开设备锁
             [backCamera unlockForConfiguration];
             
             [self.flashToggleButton setEnabled:YES];
@@ -286,6 +296,8 @@
         }
         
         NSError *error = nil;
+        
+        //获取摄像头捕捉到的数据
         AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera error:&error];
         if (error) {
             NSLog(@"ERROR: trying to open camera: %@", error);
@@ -297,9 +309,11 @@
             [self cancel:self.cancelButton];
             return;
         }
+        //通过addInput 将session与input关联起来
         [session addInput:input];
     }
     
+    //前置摄像头开启时的设置
     if (FrontCamera) {
         [self.flashToggleButton setEnabled:NO];
         NSError *error = nil;
@@ -313,16 +327,19 @@
     if (stillImageOutput)
         [stillImageOutput release], stillImageOutput=nil;
     
+    //照片输出流
     stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    //通过字典设置其属性
     NSDictionary *outputSettings = [[[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil] autorelease];
     [stillImageOutput setOutputSettings:outputSettings];
     
     [session addOutput:stillImageOutput];
     
+    //从输入到输出的数据流 会话开始连接
     [session startRunning];
 }
 
-
+#pragma mart - 拍摄照片
 - (void) capImage { //method to capture image from AVCaptureSession video feed
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in stillImageOutput.connections) {
@@ -366,6 +383,7 @@
     return newImage;
 }
 
+#pragma mark - 处理图片
 - (void) processImage:(UIImage *)image { //process captured image, crop, resize and rotate
     haveImage = YES;
     photoFromCam = YES;
@@ -426,22 +444,24 @@
     [self setCapturedImage];
 }
 
+#pragma mark - 拍摄完成 停止会话
 - (void)setCapturedImage{
     // Stop capturing image
     [session stopRunning];
     
     // Hide Top/Bottom controller after taking photo for editing
-    [self hideControllers];
+   // [self hideControllers];
 }
 
-#pragma mark - Device Availability Controls
+#pragma mark - 设置button 不可用
 - (void)disableCameraDeviceControls{
     self.cameraToggleButton.enabled = NO;
     self.flashToggleButton.enabled = NO;
     self.photoCaptureButton.enabled = NO;
 }
 
-#pragma mark - UIImagePicker Delegate
+#pragma mark - UIImagePicker 代理方法
+//选中相册图片后 调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     if (info) {
         photoFromCam = NO;
@@ -454,26 +474,24 @@
         if (outputImage) {
             self.captureImage.hidden = NO;
             self.captureImage.image=outputImage;
-            
+            self.imageViewGrid.hidden = YES;
             [self dismissViewControllerAnimated:YES completion:nil];
             
             // Hide Top/Bottom controller after taking photo for editing
-            [self hideControllers];
+            //[self hideControllers];
         }
     }
 }
-
+//取消后调用
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     initializeCamera = YES;
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 
-
-
-
-#pragma mark - UI Control Helpers
+#pragma mark - 隐藏buttons
 - (void)hideControllers{
     [UIView animateWithDuration:0.2 animations:^{
         //1)animate them out of screen
@@ -486,7 +504,7 @@
         
     } completion:nil];
 }
-
+#pragma mark - 显示buttons
 - (void)showControllers{
     [UIView animateWithDuration:0.2 animations:^{
         //1)animate them into screen
@@ -502,7 +520,7 @@
 
 
 #pragma mark - button 点击事件
-
+//切换镜头
 - (IBAction)switchCamera:(UIButton *)sender {
     //switch cameras front and rear cameras
     // Stop current recording process
@@ -519,6 +537,7 @@
         [self performSelector:@selector(initializeCamera) withObject:nil afterDelay:0.001];
     }
 }
+//设置闪光灯模式
 - (IBAction)toggleFlash:(UIButton *)sender {
     if (!FrontCamera) {
         
@@ -561,6 +580,7 @@
     }
 
 }
+//拍照
 - (IBAction)snapImage:(id)sender {
     [self.photoCaptureButton setEnabled:NO];
     
@@ -568,11 +588,14 @@
         self.captureImage.image = nil; //remove old image from view
         self.captureImage.hidden = NO; //show the captured image view
         self.imagePreview.hidden = YES; //hide the live video feed
+        self.imageViewGrid.hidden = YES;
         [self capImage];
     }
     else {
+        
         self.captureImage.hidden = YES;
         self.imagePreview.hidden = NO;
+        //self.imageViewGrid.hidden = YES;
         haveImage = NO;
     }
 }

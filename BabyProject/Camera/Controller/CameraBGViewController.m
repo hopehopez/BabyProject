@@ -7,7 +7,7 @@
 //
 
 #import "CameraBGViewController.h"
-#import "CameraViewController.h"
+
 @interface CameraBGViewController ()
 
 @end
@@ -17,17 +17,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    CameraViewController *cameraController = [[CameraViewController alloc] init];
-    
-    NSInteger index = [ZSQStorage getItemSelectedIndex];
-    NSArray *array = self.tabBarController.viewControllers;
-    UIViewController *viewControl = array[index];
-    [viewControl presentViewController:cameraController animated:YES completion:^{
-        
-         self.tabBarController.selectedIndex = index;
-        
-    }];
-   
 }
 
 - (void)viewDidLoad {

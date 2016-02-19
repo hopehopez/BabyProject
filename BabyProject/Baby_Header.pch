@@ -40,5 +40,6 @@
 #import "CountCell.h"
 
 #import "LoginViewController.h"
+#import "CameraViewController.h"
 
 #endif

@@ -123,18 +123,14 @@
 
 #pragma mark - 创建登录页
 - (void)setLoginView{
-    
     NSInteger login = [ZSQStorage getLogin];
     if (!login) {
         LoginViewController *loginView = [[LoginViewController alloc] init];
-
+        
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
         
-        [self.window.rootViewController presentViewController:nav animated:YES completion:^{
-            
-           }];
+        [self.mainController presentViewController:nav animated:YES completion:nil];
     }
-    
 }
 
 #pragma mark - tabBar 代理
@@ -142,11 +138,23 @@
     
     //每次选中tabBarItem  更新用户偏好
     [ZSQStorage setItemSelectedIndex:tabBarController.selectedIndex];
-    if (tabBarController.selectedIndex == 0) {
-        [self setLoginView];
-    }
 
 }
+
+//设置某个控制器不显示
+- ( BOOL )tabBarController:( UITabBarController *)tabBarController shouldSelectViewController :( UIViewController *)viewController{
+    
+    // 代表 HMT_CViewController 这个 View 无法显示 , 无法点击到它代表的标签栏
+    
+//    if ([viewController isKindOfClass :[ CameraBGViewController class ]]) {
+//       
+//        return NO ;
+//        
+//    }
+    return YES ;
+    
+}
+
 
 #pragma mark - 注册通知 监听用户是否登录
 - (void)registNotification{

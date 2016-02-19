@@ -68,5 +68,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 - (IBAction)cancel:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewGrid;
 
 @end

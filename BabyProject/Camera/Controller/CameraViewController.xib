@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
                 <outlet property="captureImage" destination="PLe-lw-boR" id="XOX-r5-BrG"/>
                 <outlet property="flashToggleButton" destination="GKJ-rL-Zv9" id="FSK-RA-c6Z"/>
                 <outlet property="imagePreview" destination="N6W-mI-wil" id="psq-gy-PqE"/>
+                <outlet property="imageViewGrid" destination="jm3-78-EjD" id="bC3-Sz-ElD"/>
                 <outlet property="libraryToggleButton" destination="iZ2-4W-V1k" id="hfS-Cc-yVZ"/>
                 <outlet property="photoBar" destination="SgK-8f-iHc" id="d4h-12-C5b"/>
                 <outlet property="photoCaptureButton" destination="dfk-Bp-aul" id="Jdi-XQ-5NE"/>
@@ -131,7 +132,11 @@
                         <constraint firstAttribute="height" constant="100" id="xkp-Lu-eef"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grid.png" translatesAutoresizingMaskIntoConstraints="NO" id="jm3-78-EjD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                </imageView>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="PLe-lw-boR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4z9-jD-LOm"/>
                 <constraint firstItem="SgK-8f-iHc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gs9-Ph-Uj8"/>
@@ -156,5 +161,6 @@
         <image name="camera_flip.png" width="29" height="29"/>
         <image name="camera_library.png" width="34" height="34"/>
         <image name="camera_trigger.png" width="80" height="80"/>
+        <image name="grid.png" width="320" height="320"/>
     </resources>
 </document>

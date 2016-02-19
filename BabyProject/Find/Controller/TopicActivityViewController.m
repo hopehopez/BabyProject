@@ -185,4 +185,11 @@
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+//立即参加
+- (IBAction)joinClick:(id)sender {
+    
+    CameraViewController *cameraController = [[CameraViewController alloc] init];
+    [self.tabBarController presentViewController:cameraController animated:YES completion:nil];
+    
+}
 @end

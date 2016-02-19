@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tv;
 @property (weak, nonatomic) IBOutlet UICollectionView *cv;
 
+- (IBAction)joinClick:(id)sender;
+
 @property (nonatomic, strong) ActivityModel *model;
 
 @end
