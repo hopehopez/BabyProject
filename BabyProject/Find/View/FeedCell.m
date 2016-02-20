@@ -99,5 +99,25 @@
 }
 
 - (IBAction)followClick:(id)sender {
+    
+    [self.delegate performSelector:@selector(addFollow:) withObject:self];
+    
+}
+- (IBAction)goodClick:(id)sender {
+    
+    self.goodBtn.selected ^= 1;
+    [self.delegate performSelector:@selector(addGood:) withObject:self];
+    
+}
+
+- (IBAction)commentClick:(id)sender {
+    
+    [self.delegate performSelector:@selector(addComment:) withObject:self];
+}
+
+- (IBAction)shareClick:(id)sender {
+    
+    [self.delegate performSelector:@selector(addShare:) withObject:self];
+    
 }
 @end

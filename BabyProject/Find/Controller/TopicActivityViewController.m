@@ -10,7 +10,7 @@
 
 #import "TopicActivityViewController.h"
 #import "HeadCell.h"
-@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate>{
+@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -137,6 +137,8 @@
     }else{
         FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
         FeedModel *model = _dataArray[indexPath.row];
+        cell.row = indexPath.row;
+        cell.delegate = self;
         [cell setModel:model];
         return cell;
     }
@@ -161,10 +163,35 @@
     
 }
 
-//#pragma mark - cv delegate
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    return _dataArray[]
-//}
+#pragma mark - FeedCell 的代理
+- (void)addFollow:(FeedCell *)cell{
+    
+    
+}
+- (void)addGood:(FeedCell *)cell{
+    
+    
+}
+
+- (void)addComment:(FeedCell *)cell{
+    
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    [mArray removeObjectsInRange:NSMakeRange(0, 2)];
+    
+    photoController.feedsArray = mArray;
+    photoController.index = cell.row - 2;
+    photoController.isComment = YES;
+    
+    [self.navigationController pushViewController:photoController animated:YES];
+}
+
+- (void)addShare:(FeedCell *)cell{
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

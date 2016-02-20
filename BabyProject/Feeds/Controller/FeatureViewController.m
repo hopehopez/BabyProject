@@ -8,7 +8,7 @@
 #define NUMBER 20
 #import "FeatureViewController.h"
 
-@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate>{
+@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -56,7 +56,7 @@
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
     
-    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    [header setTitle:@"正在刷新数据" forState:MJRefreshStateRefreshing];
     
     self.tv.header = header;
     
@@ -101,6 +101,8 @@
     if (_dataArray.count>0) {
         FeedModel *model = _dataArray[indexPath.row];
         cell.jingImagV.hidden = NO;
+        cell.row = indexPath.row;
+        cell.delegate = self;
         [cell setModel:model];
         
     }
@@ -119,6 +121,35 @@
     }
     return 550;
 }
+
+
+#pragma mark - FeedCell 的代理
+- (void)addFollow:(FeedCell *)cell{
+    
+    
+}
+- (void)addGood:(FeedCell *)cell{
+    
+    
+}
+
+- (void)addComment:(FeedCell *)cell{
+    
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    
+    photoController.feedsArray = mArray;
+    photoController.index = cell.row;
+    photoController.isComment = YES;
+    
+    [self.navigationController pushViewController:photoController animated:YES];
+}
+
+- (void)addShare:(FeedCell *)cell{
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

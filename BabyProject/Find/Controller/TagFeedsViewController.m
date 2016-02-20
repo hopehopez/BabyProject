@@ -10,7 +10,7 @@
 
 #import "TagFeedsViewController.h"
 
-@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate>{
+@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -29,8 +29,7 @@
     
     self.tv.delegate = self;
     self.tv.dataSource = self;
-    
-    
+
     [self registCell];
     
     [self addRefresh];
@@ -123,12 +122,15 @@
         
         FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
         FeedModel *model = _dataArray[indexPath.row];
+        cell.delegate = self;
         [cell setModel:model];
+        cell.row = indexPath.row;
         return cell;
     }
 }
 
 #pragma mark delegate
+//动态返回cell 高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == 0) {
@@ -141,13 +143,44 @@
         return size.height + 520;
     }
 }
+//cell 点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
     NSMutableArray *mArray = [_dataArray mutableCopy];
     [mArray removeObjectAtIndex:0];
+    
     photoController.feedsArray = mArray;
+    photoController.index = indexPath.row - 1;
     
     [self.navigationController pushViewController:photoController animated:YES];
+}
+
+#pragma mark - FeedCell 的代理
+- (void)addFollow:(FeedCell *)cell{
+
+
+}
+- (void)addGood:(FeedCell *)cell{
+    
+    
+}
+
+- (void)addComment:(FeedCell *)cell{
+    
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    [mArray removeObjectAtIndex:0];
+    
+    photoController.feedsArray = mArray;
+    photoController.index = cell.row - 1;
+    photoController.isComment = YES;
+    
+    [self.navigationController pushViewController:photoController animated:YES];
+}
+
+- (void)addShare:(FeedCell *)cell{
+    
+    
 }
 
 

@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-- (IBAction)backBtn:(id)sender;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *commentView;
-@property (weak, nonatomic) IBOutlet UIView *commentTxt;
-- (IBAction)sendBtn:(id)sender;
 
 @property (nonatomic, copy) NSMutableArray *feedsArray;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, assign) BOOL isComment;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *commentView;
+@property (weak, nonatomic) IBOutlet UITextView *commentTxt;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewContraint;
+
+- (IBAction)backBtn:(id)sender;
+- (IBAction)sendBtn:(id)sender;
+
+
 @end
