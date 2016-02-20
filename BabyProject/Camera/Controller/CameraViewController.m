@@ -8,11 +8,13 @@
 
 #import "CameraViewController.h"
 #import <ImageIO/ImageIO.h>
-
+#import <Photos/Photos.h>
 #define DegreesToRadians(x) ((x) * M_PI / 180.0)
 @interface CameraViewController (){
     UIInterfaceOrientation orientationLast, orientationAfterProcess;
     CMMotionManager *motionManager;
+
+    NSMutableArray *_imagesArray;
 }
 
 
@@ -37,20 +39,54 @@
     self.tabBarController.tabBar.hidden = YES;
     //隐藏状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-
+    
+    //获取相册图片
+    _imagesArray = [NSMutableArray array];
+    [self getPhotos];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
-    
+     //初始化相机
     if (initializeCamera){
         initializeCamera = NO;
-        
         // Initialize camera
         [self initializeCamera];
     }
+}
+
+- (void)getPhotos{
+    // 获取所有资源的集合，并按资源的创建时间排序
+    PHFetchOptions *options = [[PHFetchOptions alloc] init];
+    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
+    NSLog(@"%ld", assetsFetchResults.count);
     
+    // 在资源的集合中所有的集合，并获取其中的图片
+    PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
+    for (PHAsset *asset in assetsFetchResults) {
+        [imageManager requestImageForAsset:asset
+                                targetSize:PHImageManagerMaximumSize
+                               contentMode:PHImageContentModeAspectFit
+                                   options:nil
+                             resultHandler:^(UIImage *result, NSDictionary *info) {
+                                 
+                                 // 得到一张 UIImage，展示到界面上
+                                 if (result) {
+                                     [_imagesArray addObject:result];
+                                 }
+                             }];
+    }
+    
+    if (_imagesArray.count>0) {
+        _phView1.image = _imagesArray[0];
+        _phView2.image = _imagesArray[1];
+        _phView3.image = _imagesArray[2];
+        _phView4.image = _imagesArray[3];
+
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

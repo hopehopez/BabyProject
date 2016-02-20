@@ -69,5 +69,9 @@
 - (IBAction)cancel:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewGrid;
+@property (weak, nonatomic) IBOutlet UIImageView *phView1;
+@property (weak, nonatomic) IBOutlet UIImageView *phView2;
+@property (weak, nonatomic) IBOutlet UIImageView *phView3;
+@property (weak, nonatomic) IBOutlet UIImageView *phView4;
 
 @end
