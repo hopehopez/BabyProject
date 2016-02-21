@@ -9,6 +9,8 @@
 #import "CameraViewController.h"
 #import <ImageIO/ImageIO.h>
 #import <Photos/Photos.h>
+//#import "PhotosViewController.m"
+
 #define DegreesToRadians(x) ((x) * M_PI / 180.0)
 @interface CameraViewController (){
     UIInterfaceOrientation orientationLast, orientationAfterProcess;
@@ -61,15 +63,28 @@
     // 获取所有资源的集合，并按资源的创建时间排序
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
     options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-    PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
-    NSLog(@"%ld", assetsFetchResults.count);
+    //PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
+    //NSLog(@"%ld", assetsFetchResults.count);
     
+    PHFetchResult *result = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    
+    for (PHCollection *conllection in result) {
+        
+        NSLog(@"%@, %d", conllection.localizedTitle, conllection.canContainAssets);
+    }
+    
+    PHAssetCollection *recently = [result lastObject];
+    
+    PHFetchResult *assets = [PHAsset fetchAssetsInAssetCollection:recently options:options];
+    
+    NSLog(@"%ld", assets.count);
+
     // 在资源的集合中所有的集合，并获取其中的图片
     PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
-    for (PHAsset *asset in assetsFetchResults) {
+    for (PHAsset *asset in assets) {
         [imageManager requestImageForAsset:asset
-                                targetSize:PHImageManagerMaximumSize
-                               contentMode:PHImageContentModeAspectFit
+                                targetSize:CGSizeMake(200, 200)
+                               contentMode:PHImageContentModeAspectFill
                                    options:nil
                              resultHandler:^(UIImage *result, NSDictionary *info) {
                                  
@@ -277,23 +292,23 @@
     
     // 检查是否有设备可用 数组为0 即不可用
     if (devices.count==0) {
-        NSLog(@"No Camera Available");
+       // NSLog(@"No Camera Available");
         [self disableCameraDeviceControls];
         return;
     }
     
     for (AVCaptureDevice *device in devices) {
         
-        NSLog(@"Device name: %@", [device localizedName]);
+       // NSLog(@"Device name: %@", [device localizedName]);
         
         if ([device hasMediaType:AVMediaTypeVideo]) {
             //根据设备的位置信息 分别为捕捉设备赋值
             if ([device position] == AVCaptureDevicePositionBack) {
-                NSLog(@"Device position : back");
+              //  NSLog(@"Device position : back");
                 backCamera = device;
             }
             else {
-                NSLog(@"Device position : front");
+               // NSLog(@"Device position : front");
                 frontCamera = device;
             }
         }
@@ -439,7 +454,7 @@
     //    assetOrientation = ALAssetOrientationUp;
     
     // adjust image orientation
-    NSLog(@"orientation: %ld",orientationLast);
+    //NSLog(@"orientation: %ld",orientationLast);
     orientationAfterProcess = orientationLast;
     switch (orientationLast) {
         case UIInterfaceOrientationPortrait:
@@ -649,6 +664,12 @@
     //    imagePickerController.delegate = self;
     //    imagePickerController.allowsEditing = YES;
     [self presentViewController:imgPicker animated:YES completion:NULL];
+    
+//    PhotosViewController *photoController = [[PhotosViewController alloc] init];
+//    photoController.dataArray1 = [_imagesArray copy];
+//    photoController.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:photoController   animated:YES];
+    
 }
 - (IBAction)cancel:(id)sender {
 //    if ([delegate respondsToSelector:@selector(yCameraControllerDidCancel)]) {
