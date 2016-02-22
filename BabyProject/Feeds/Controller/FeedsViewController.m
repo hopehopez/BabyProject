@@ -65,4 +65,18 @@
 }
 */
 
+
+- (IBAction)changeValue:(UISegmentedControl *)sender {
+    
+    
+    if (sender.numberOfSegments == 1) {
+        NSInteger login = [ZSQStorage getLogin];
+        if (!login) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGIN" object:nil];
+        }
+        
+    }
+    
+    
+}
 @end

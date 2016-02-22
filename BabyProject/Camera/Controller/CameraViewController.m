@@ -44,7 +44,7 @@
     
     //获取相册图片
     _imagesArray = [NSMutableArray array];
-    [self getPhotos];
+    //[self getPhotos];
     
 }
 
@@ -59,6 +59,7 @@
     }
 }
 
+#pragma mark - 获取相册图片
 - (void)getPhotos{
     // 获取所有资源的集合，并按资源的创建时间排序
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
@@ -68,10 +69,10 @@
     
     PHFetchResult *result = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     
-    for (PHCollection *conllection in result) {
-        
-        NSLog(@"%@, %d", conllection.localizedTitle, conllection.canContainAssets);
-    }
+//    for (PHCollection *conllection in result) {
+//        
+//        NSLog(@"%@, %d", conllection.localizedTitle, conllection.canContainAssets);
+//    }
     
     PHAssetCollection *recently = [result lastObject];
     
@@ -87,7 +88,6 @@
                                contentMode:PHImageContentModeAspectFill
                                    options:nil
                              resultHandler:^(UIImage *result, NSDictionary *info) {
-                                 
                                  // 得到一张 UIImage，展示到界面上
                                  if (result) {
                                      [_imagesArray addObject:result];
@@ -502,6 +502,18 @@
     
     // Hide Top/Bottom controller after taking photo for editing
    // [self hideControllers];
+    
+    // 存储图片到"相机胶卷"
+    UIImageWriteToSavedPhotosAlbum(self.captureImage.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    
+}
+// 成功保存图片到相册中, 必须调用此方法, 否则会报参数越界错误
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (error) {
+        NSLog(@"%@: %@", @"保存失败", error);
+    }else{
+        NSLog(@"%@", @"保存成功");
+    }
 }
 
 #pragma mark - 设置button 不可用
@@ -629,10 +641,10 @@
             }
         }
     }
-
 }
 //拍照
 - (IBAction)snapImage:(id)sender {
+    
     [self.photoCaptureButton setEnabled:NO];
     
     if (!haveImage) {

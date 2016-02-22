@@ -57,7 +57,7 @@
     if (_showArrowButton)
     {
         _arrowButton = [[UIImageView alloc] initWithFrame:CGRectMake(functionButtonX, DOT_COORDINATE, ARROW_BUTTON_WIDTH, ARROW_BUTTON_WIDTH)];
-        _arrowButton.layer.shadowColor = [UIColor whiteColor].CGColor;
+        _arrowButton.layer.shadowColor = [UIColor clearColor].CGColor;
         _arrowButton.image = _arrowImage;
         _arrowButton.userInteractionEnabled = YES;
         [self addSubview:_arrowButton];

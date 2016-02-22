@@ -140,7 +140,7 @@
         FeedModel *model = _dataArray[indexPath.row];
         NSString *str = model.addonTitles;
         CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
-        return size.height + 520;
+         return size.height + 150 + SCREEN_WIDTH;
     }
 }
 //cell 点击事件
@@ -161,7 +161,6 @@
 
 }
 - (void)addGood:(FeedCell *)cell{
-    
     
 }
 
@@ -208,7 +207,6 @@
     
     CameraViewController *cameraController = [[CameraViewController alloc] init];
     [self.tabBarController presentViewController:cameraController animated:YES completion:nil];
-
     
 }
 @end

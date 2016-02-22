@@ -20,7 +20,7 @@
                         <rect key="frame" x="-12" y="-2" width="409" height="164"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bg_n.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ecm-qD-33L">
-                        <rect key="frame" x="8" y="4" width="369" height="146"/>
+                        <rect key="frame" x="8" y="4" width="369" height="150"/>
                     </imageView>
                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="0nk-TA-VEF">
                         <rect key="frame" x="14" y="57" width="89" height="89"/>
@@ -140,7 +140,7 @@
                     <constraint firstItem="0nk-TA-VEF" firstAttribute="top" secondItem="hNc-ft-9c2" secondAttribute="top" id="ftp-6b-XII"/>
                     <constraint firstAttribute="trailingMargin" secondItem="reb-fY-xUW" secondAttribute="trailing" constant="-20" id="gJO-ng-jV9"/>
                     <constraint firstItem="sfn-xl-pou" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="hMO-0Z-WW8"/>
-                    <constraint firstItem="Ecm-qD-33L" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-4" id="kLB-dC-OEA"/>
+                    <constraint firstItem="Ecm-qD-33L" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="kLB-dC-OEA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="GFv-6m-qcA" secondAttribute="trailing" constant="8" id="kuv-KP-dR7"/>
                     <constraint firstItem="hNc-ft-9c2" firstAttribute="width" secondItem="xJB-lx-Wr3" secondAttribute="width" id="u0W-mx-cOO"/>
                     <constraint firstItem="IA9-0F-O4x" firstAttribute="leading" secondItem="xJB-lx-Wr3" secondAttribute="trailing" id="wVy-YO-v1w"/>

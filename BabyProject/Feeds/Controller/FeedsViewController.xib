@@ -33,6 +33,9 @@
                         <segment title="关注"/>
                     </segments>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="changeValue:" destination="-1" eventType="valueChanged" id="Ewr-lK-K9q"/>
+                    </connections>
                 </segmentedControl>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uRM-N5-4DN">
                     <rect key="frame" x="337" y="30" width="25" height="22"/>
@@ -52,6 +55,11 @@
                 <constraint firstAttribute="trailing" secondItem="5rv-Ca-qn9" secondAttribute="trailing" id="zPa-Ki-s3I"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="uRM-N5-4DN"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="225.5" y="386.5"/>
         </view>
     </objects>

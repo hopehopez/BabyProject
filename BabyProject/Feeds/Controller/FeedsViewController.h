@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FeedsViewController : UIViewController
+- (IBAction)changeValue:(UISegmentedControl *)sender;
+
 
 @end

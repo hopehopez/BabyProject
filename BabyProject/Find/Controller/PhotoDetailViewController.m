@@ -162,7 +162,7 @@ static NSInteger k = 1;
         FeedModel *model = self.feedsArray[_index];
         NSString *str = model.addonTitles;
         CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
-        return size.height + 520;
+         return size.height + 150 + SCREEN_WIDTH;
 
     }else {
         CommentModel1 *model = _dataArray[indexPath.row];

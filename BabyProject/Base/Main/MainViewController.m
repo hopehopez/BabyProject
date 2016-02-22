@@ -117,7 +117,6 @@
 - (void)tapClick:(UITapGestureRecognizer *)tap{
     if (tap.view.tag - 100 == 0) {
         NSInteger login = [ZSQStorage getLogin];
-        login = 1;
         if (!login) {
             LoginViewController *loginView = [[LoginViewController alloc] init];
             
