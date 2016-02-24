@@ -38,6 +38,7 @@
 //自定义Cell
 #import "FeedCell.h"
 #import "CountCell.h"
+#import "IconCell.h"
 
 //常用controller
 #import "LoginViewController.h"

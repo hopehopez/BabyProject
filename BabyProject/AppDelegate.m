@@ -195,7 +195,7 @@
     //app已经进入激活状态是 注册通知
     [self registNotification];
     
-    [self setLoginView];
+    //[self setLoginView];
     
 }
 

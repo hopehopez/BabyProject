@@ -75,6 +75,8 @@
 		BC1F68431C773546004D7026 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F68411C773546004D7026 /* CommentCell.m */; };
 		BC1F68441C773546004D7026 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F68421C773546004D7026 /* CommentCell.xib */; };
 		BC1F68471C774638004D7026 /* CommentModel1.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F68461C774638004D7026 /* CommentModel1.m */; };
+		BC410A8D1C7DD98800F7F39E /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC410A8B1C7DD98800F7F39E /* IconCell.m */; };
+		BC410A8E1C7DD98800F7F39E /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC410A8C1C7DD98800F7F39E /* IconCell.xib */; };
 		BC416F261C71B37400A65C05 /* BaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F251C71B37400A65C05 /* BaseHttpClient.m */; };
 		BC416F421C71B39100A65C05 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2B1C71B39100A65C05 /* JSONModel.m */; };
 		BC416F431C71B39100A65C05 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416F2D1C71B39100A65C05 /* JSONModelArray.m */; };
@@ -131,6 +133,7 @@
 		BC416FDD1C71B3E000A65C05 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416FD31C71B3E000A65C05 /* AFURLResponseSerialization.m */; };
 		BC416FDE1C71B3E000A65C05 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416FD51C71B3E000A65C05 /* AFURLSessionManager.m */; };
 		BC416FE21C71B4A700A65C05 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC416FE11C71B4A700A65C05 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BC449B331C7BF30E00AF9374 /* LaunchImage-700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC449B2F1C7BF30E00AF9374 /* LaunchImage-700@2x.png */; };
 		BC77A1841C71D322002B6421 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC77A1831C71D322002B6421 /* ActivityModel.m */; };
 		BC77A1871C71D670002B6421 /* RecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC77A1861C71D670002B6421 /* RecommendModel.m */; };
 		BC77A18B1C71EAB8002B6421 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC77A1891C71EAB8002B6421 /* ActivityCell.m */; };
@@ -332,6 +335,9 @@
 		BC1F68421C773546004D7026 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		BC1F68451C774638004D7026 /* CommentModel1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel1.h; sourceTree = "<group>"; };
 		BC1F68461C774638004D7026 /* CommentModel1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel1.m; sourceTree = "<group>"; };
+		BC410A8A1C7DD98800F7F39E /* IconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
+		BC410A8B1C7DD98800F7F39E /* IconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconCell.m; sourceTree = "<group>"; };
+		BC410A8C1C7DD98800F7F39E /* IconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
 		BC416F241C71B37400A65C05 /* BaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHttpClient.h; sourceTree = "<group>"; };
 		BC416F251C71B37400A65C05 /* BaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHttpClient.m; sourceTree = "<group>"; };
 		BC416F271C71B37F00A65C05 /* RequestURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestURL.h; sourceTree = "<group>"; };
@@ -448,6 +454,7 @@
 		BC416FD51C71B3E000A65C05 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		BC416FE01C71B4A700A65C05 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BC416FE11C71B4A700A65C05 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BC449B2F1C7BF30E00AF9374 /* LaunchImage-700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700@2x.png"; sourceTree = "<group>"; };
 		BC77A1821C71D322002B6421 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		BC77A1831C71D322002B6421 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
 		BC77A1851C71D670002B6421 /* RecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendModel.h; sourceTree = "<group>"; };
@@ -1029,6 +1036,7 @@
 		BCAC2D921C71741B00AD6A3E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BC449B2F1C7BF30E00AF9374 /* LaunchImage-700@2x.png */,
 				BCB34D861C748E9F00FE9C1F /* Login&Regist */,
 				7CA88AF51C74C91B00F76ABA /* Baby */,
 				BCAC2E031C71A3D100AD6A3E /* find */,
@@ -1218,6 +1226,9 @@
 				BC1F68401C773546004D7026 /* CommentCell.h */,
 				BC1F68411C773546004D7026 /* CommentCell.m */,
 				BC1F68421C773546004D7026 /* CommentCell.xib */,
+				BC410A8A1C7DD98800F7F39E /* IconCell.h */,
+				BC410A8B1C7DD98800F7F39E /* IconCell.m */,
+				BC410A8C1C7DD98800F7F39E /* IconCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1504,6 +1515,7 @@
 				7CA243801C736A9100F5F88C /* btn_follow@3x.png in Resources */,
 				BCC782FF1C730B1B00671A21 /* icon_back_red@3x.png in Resources */,
 				BCB34D6F1C74620100FE9C1F /* invicon@2x.png in Resources */,
+				BC410A8E1C7DD98800F7F39E /* IconCell.xib in Resources */,
 				BCB34DA11C74905400FE9C1F /* btn_login_n@3x.png in Resources */,
 				7CA88B031C74CA0600F76ABA /* guide_addBaby@2x.png in Resources */,
 				7CA2439B1C736DBD00F5F88C /* gender_boy@2x.png in Resources */,
@@ -1620,6 +1632,7 @@
 				BCB34D7E1C747A9900FE9C1F /* feed_jing@3x.png in Resources */,
 				7CA88B1B1C74CB1A00F76ABA /* register_girl_h@3x.png in Resources */,
 				BCB34D8B1C748EAF00FE9C1F /* btn_secureSwitch@2x.png in Resources */,
+				BC449B331C7BF30E00AF9374 /* LaunchImage-700@2x.png in Resources */,
 				BC1BFA241C75DDA40066D661 /* camera_flash_auto@2x.png in Resources */,
 				BCC783191C733D1B00671A21 /* btn_list_n@3x.png in Resources */,
 				BCC782EC1C72EB6900671A21 /* loading.gif in Resources */,
@@ -1671,6 +1684,7 @@
 				BC416FBE1C71B3C600A65C05 /* UIImage+WebP.m in Sources */,
 				BC416FD61C71B3E000A65C05 /* AFHTTPRequestOperation.m in Sources */,
 				BCAC2DF91C71800200AD6A3E /* MessagesViewController.m in Sources */,
+				BC410A8D1C7DD98800F7F39E /* IconCell.m in Sources */,
 				BC416FD71C71B3E000A65C05 /* AFHTTPRequestOperationManager.m in Sources */,
 				BCB34D841C748DE900FE9C1F /* LoginViewController.m in Sources */,
 				BC416FDE1C71B3E000A65C05 /* AFURLSessionManager.m in Sources */,

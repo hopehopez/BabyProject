@@ -18,7 +18,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -100,24 +100,39 @@
 
 - (IBAction)followClick:(id)sender {
     
-    [self.delegate performSelector:@selector(addFollow:) withObject:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addFollow:)]) {
+        [self.delegate performSelector:@selector(addFollow:) withObject:self];
+        
+    }
+    
     
 }
 - (IBAction)goodClick:(id)sender {
     
     self.goodBtn.selected ^= 1;
-    [self.delegate performSelector:@selector(addGood:) withObject:self];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addGood:)]) {
+        [self.delegate performSelector:@selector(addGood:) withObject:self];
+        
+    }
+    
     
 }
 
 - (IBAction)commentClick:(id)sender {
     
-    [self.delegate performSelector:@selector(addComment:) withObject:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addComment:)]) {
+        [self.delegate performSelector:@selector(addComment:) withObject:self];
+        
+    }
 }
 
 - (IBAction)shareClick:(id)sender {
     
-    [self.delegate performSelector:@selector(addShare:) withObject:self];
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addShare:)]) {
+        [self.delegate performSelector:@selector(addShare:) withObject:self];
+        
+        
+    }
 }
 @end

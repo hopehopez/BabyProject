@@ -35,6 +35,8 @@
     [self addRefresh];
     
     [self loadData];
+    
+    
 }
 
 #pragma mark - 注册cell
@@ -145,14 +147,19 @@
 }
 //cell 点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
-    NSMutableArray *mArray = [_dataArray mutableCopy];
-    [mArray removeObjectAtIndex:0];
     
-    photoController.feedsArray = mArray;
-    photoController.index = indexPath.row - 1;
+    if (indexPath.row != 0) {
+        PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+        NSMutableArray *mArray = [_dataArray mutableCopy];
+        [mArray removeObjectAtIndex:0];
+        
+        photoController.feedsArray = mArray;
+        photoController.index = indexPath.row - 1;
+        
+        [self.navigationController pushViewController:photoController animated:YES];
+    }
     
-    [self.navigationController pushViewController:photoController animated:YES];
+   
 }
 
 #pragma mark - FeedCell 的代理
