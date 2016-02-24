@@ -10,7 +10,8 @@
 
 #import "TopicActivityViewController.h"
 #import "HeadCell.h"
-@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate>{
+#import "HeaderView.h"
+@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -19,6 +20,11 @@
     UILabel *_countLabel;
     UIButton *_menuBtn;
     UIButton *_listBtn;
+    
+    UIView *_headView2;
+    UILabel *_countLabel2;
+    UIButton *_menuBtn2;
+    UIButton *_listBtn2;
     
 }
 @end
@@ -34,6 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _page = 0;
+    
     _dataArray = [NSMutableArray array];
     
     self.tv.delegate = self;
@@ -42,12 +49,13 @@
     
     [self setHeadView];
     
-    [self registCell];
-
+    [self setHeadView2];
     
-   // self.tv.hidden = YES;
+    [self registCell];
+    
+    self.tv.hidden = YES;
     //self.cv.hidden = YES;
-    self.cv.backgroundColor = [UIColor orangeColor];
+    self.cv.backgroundColor = [UIColor clearColor];
     self.cv.delegate = self;
     self.cv.dataSource = self;
     
@@ -65,7 +73,7 @@
     NSString *str = self.model.descriptionK;
     CGSize size = [str boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
     
-    _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 270 + size.height)];
+    _headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 280 + size.height)];
     _headView.backgroundColor = [UIColor clearColor];
     
     UIImageView *bg = [[UIImageView alloc] initWithFrame:_headView.bounds];
@@ -107,39 +115,110 @@
     [_headView addSubview:detailLabel];
     
     //记录条数
-    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(detailLabel.frame) + 10, SCREEN_WIDTH - 16, 30)];
+    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(detailLabel.frame) + 10, SCREEN_WIDTH - 16, 40)];
     _countLabel.backgroundColor = [UIColor whiteColor];
     _countLabel.font = [UIFont systemFontOfSize:15];
     _countLabel.textColor = [UIColor lightGrayColor];
     [_headView addSubview:_countLabel];
     
     //显示样式控制按钮
-    _menuBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 15, 20, 20)];
+    _menuBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
     [_menuBtn setImage:[UIImage imageNamed:@"btn_menu_n"] forState:UIControlStateNormal];
     [_menuBtn setImage:[UIImage imageNamed:@"btn_menu_h"] forState:UIControlStateSelected];
     [_menuBtn addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
     _menuBtn.selected = YES;
     [_headView addSubview:_menuBtn];
     
-    _listBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 15, 20, 20)];
+    _listBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
     [_listBtn setImage:[UIImage imageNamed:@"btn_list_n"] forState:UIControlStateNormal];
     [_listBtn setImage:[UIImage imageNamed:@"btn_list_h"] forState:UIControlStateSelected];
     [_listBtn addTarget:self action:@selector(showList:) forControlEvents:UIControlEventTouchUpInside];
     [_headView addSubview:_listBtn];
     
-    //[self.cv registerClass:[_headView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeadView"];
     
-    
-    self.tv.tableHeaderView = _headView;
 }
+
+- (void)setHeadView2{
+    
+    NSString *str = self.model.descriptionK;
+    CGSize size = [str boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+    
+    _headView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 280 + size.height)];
+    _headView2.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:_headView2.bounds];
+    bg.image = [UIImage imageNamed:@"cell_bg_h.png"];
+    [_headView2 addSubview:bg];
+    
+    //图片
+    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 170)];
+    [imageView2 sd_setImageWithURL:[NSURL URLWithString: self.model.sampleImage]  placeholderImage:nil options:SDWebImageRefreshCached];
+    [_headView2 addSubview:imageView2];
+    
+    //标题
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 175, 200, 21)];
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.text = self.model.name;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    [_headView2 addSubview:titleLabel];
+    
+    //亲密度
+    UILabel *awardPoints = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 80, 175, 72, 21)];
+    awardPoints.font = [UIFont systemFontOfSize:12];
+    awardPoints.textAlignment = NSTextAlignmentRight;
+    awardPoints.textColor = [UIColor colorWithRed:252/255.0 green:71/255.0 blue:85/255.0 alpha:1];
+    awardPoints.text = [NSString stringWithFormat:@"亲密度%@点", self.model.awardPoints];
+    [_headView2 addSubview:awardPoints];
+    
+    //分割线
+    UILabel *xian = [[UILabel alloc] initWithFrame:CGRectMake(5, 200, SCREEN_WIDTH - 10, 1)];
+    xian.backgroundColor = [UIColor lightGrayColor];
+    [_headView2 addSubview:xian];
+    
+    //详情
+    UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 205, SCREEN_WIDTH - 16, size.height + 20)];
+    detailLabel.font = [UIFont systemFontOfSize:15];
+    detailLabel.textColor = [UIColor lightGrayColor];
+    detailLabel.backgroundColor = [UIColor clearColor];
+    detailLabel.text = self.model.descriptionK;
+    detailLabel.numberOfLines = 0;
+    [_headView2 addSubview:detailLabel];
+    
+    //记录条数
+    _countLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(detailLabel.frame) + 10, SCREEN_WIDTH - 16, 40)];
+    _countLabel2.backgroundColor = [UIColor whiteColor];
+    _countLabel2.font = [UIFont systemFontOfSize:15];
+    _countLabel2.textColor = [UIColor lightGrayColor];
+    [_headView2 addSubview:_countLabel2];
+    
+    //显示样式控制按钮
+    _menuBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    [_menuBtn2 setImage:[UIImage imageNamed:@"btn_menu_n.png"] forState:UIControlStateNormal];
+    [_menuBtn2 setImage:[UIImage imageNamed:@"btn_menu_h.png"] forState:UIControlStateSelected];
+    [_menuBtn2 addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
+    _menuBtn2.selected = YES;
+    [_headView2 addSubview:_menuBtn2];
+    
+    _listBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    [_listBtn2 setImage:[UIImage imageNamed:@"btn_list_n.png"] forState:UIControlStateNormal];
+    [_listBtn2 setImage:[UIImage imageNamed:@"btn_list_h.png"] forState:UIControlStateSelected];
+    [_listBtn2 addTarget:self action:@selector(showList:) forControlEvents:UIControlEventTouchUpInside];
+    [_headView2 addSubview:_listBtn2];
+    
+    self.tv.tableHeaderView = _headView2;
+    
+  }
+
 
 #pragma mark - 切换视图
 - (void)showMenu:(UIButton *)sender{
+    
     
     _menuBtn.selected = YES;
     _listBtn.selected = NO;
     self.tv.hidden = YES;
     self.cv.hidden = NO;
+    
 }
 
 - (void)showList:(UIButton *)sender{
@@ -160,6 +239,8 @@
     UINib *iconNib = [UINib nibWithNibName:@"IconCell" bundle:nil];
     [self.cv registerNib:iconNib forCellWithReuseIdentifier:@"IconCell"];
     
+    
+    [self.cv registerNib: [UINib nibWithNibName:@"HeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeadView"];
 }
 
 #pragma mark - 添加刷新
@@ -167,17 +248,15 @@
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [_dataArray removeAllObjects];
-        [_dataArray addObject:self.model];
-        [_dataArray addObject:@""];
         [self loadData];
         [self.tv.header endRefreshing];
     }];
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
-    
     [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
     
     self.tv.header = header;
+    self.cv.header = header;
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
@@ -185,41 +264,46 @@
         [self.tv.footer endRefreshing];
     }];
     self.tv.footer = footer;
+    self.cv.footer = footer;
 }
 
 //  返回头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    
     //如果是头视图
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        UICollectionReusableView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeadView" forIndexPath:indexPath];
         
+        HeaderView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeadView" forIndexPath:indexPath];
+
         //头视图添加view
         [header addSubview:_headView];
         return header;
     }
-    //如果底部视图
-    //    if([kind isEqualToString:UICollectionElementKindSectionFooter]){
-    //
-    //    }
     return nil;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    
+    NSString *str = self.model.descriptionK;
+    CGSize size = [str boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+
+    return CGSizeMake(SCREEN_WIDTH, 280 + size.height);
+}
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return _dataArray.count;
+    
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     
     IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
     
-//    if (!cell) {
-//        cell = [[IconCell alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
-//    }
-    
     FeedModel *model = _dataArray[indexPath.row];
     
-    [cell reloadCellWithImage: model.imageUrl];
+    [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
     
     return cell; 
 }
@@ -235,6 +319,7 @@
         NSNumber *countNum = dict[@"count"];
         
         _countLabel.text = [NSString stringWithFormat:@" %@条记录", countNum];
+        _countLabel2.text = [NSString stringWithFormat:@" %@条记录", countNum];
         
         NSArray *feedsArray = dict[@"feeds"];
         for (NSDictionary *dict1 in feedsArray) {

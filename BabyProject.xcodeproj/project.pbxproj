@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C3312401C7DF84A00216241 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C33123E1C7DF84A00216241 /* HeaderView.m */; };
+		7C3312431C7E0A4A00216241 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3312421C7E0A4A00216241 /* HeaderView.xib */; };
 		7C7A0AEF1C72174A00FAA805 /* cell_bg_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7A0AEE1C72174A00FAA805 /* cell_bg_n@2x.png */; };
 		7CA243771C73658300F5F88C /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA243751C73658300F5F88C /* FeedCell.m */; };
 		7CA243781C73658300F5F88C /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA243761C73658300F5F88C /* FeedCell.xib */; };
@@ -260,6 +262,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C33123D1C7DF84A00216241 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		7C33123E1C7DF84A00216241 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		7C3312421C7E0A4A00216241 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		7C7A0AEE1C72174A00FAA805 /* cell_bg_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg_n@2x.png"; sourceTree = "<group>"; };
 		7CA243741C73658300F5F88C /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
 		7CA243751C73658300F5F88C /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
@@ -1229,6 +1234,9 @@
 				BC410A8A1C7DD98800F7F39E /* IconCell.h */,
 				BC410A8B1C7DD98800F7F39E /* IconCell.m */,
 				BC410A8C1C7DD98800F7F39E /* IconCell.xib */,
+				7C33123D1C7DF84A00216241 /* HeaderView.h */,
+				7C33123E1C7DF84A00216241 /* HeaderView.m */,
+				7C3312421C7E0A4A00216241 /* HeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1591,6 +1599,7 @@
 				7CE56AD11C761160005BF88A /* CameraBGViewController.xib in Resources */,
 				BCB34D921C748FD100FE9C1F /* tiphoto@3x.png in Resources */,
 				BCAC2DAF1C71741B00AD6A3E /* tabbar_3a@2x.png in Resources */,
+				7C3312431C7E0A4A00216241 /* HeaderView.xib in Resources */,
 				7CA88B281C74D27900F76ABA /* AddBabyViewController.xib in Resources */,
 				BCB34DA31C74905400FE9C1F /* btn_login_sina_n@2x.png in Resources */,
 				BC77A1901C71EBCA002B6421 /* moreicon@3x.png in Resources */,
@@ -1707,6 +1716,7 @@
 				BC416FC01C71B3C600A65C05 /* UIImageView+WebCache.m in Sources */,
 				BC416FBB1C71B3C600A65C05 /* UIButton+WebCache.m in Sources */,
 				BCB34DAE1C74946D00FE9C1F /* RegisterViewController.m in Sources */,
+				7C3312401C7DF84A00216241 /* HeaderView.m in Sources */,
 				BC416F881C71B3BB00A65C05 /* MJRefreshGifHeader.m in Sources */,
 				BCC7831C1C734FE300671A21 /* FeedModel.m in Sources */,
 				BCAC2DF41C717FEA00AD6A3E /* FeedsViewController.m in Sources */,

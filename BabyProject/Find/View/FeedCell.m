@@ -24,7 +24,7 @@
 
 - (void)setModel:(FeedModel *)model{
     
-    [self.headPicImgV sd_setImageWithURL:[NSURL URLWithString:model.creatorHeadPic] placeholderImage:nil options:SDWebImageRefreshCached];
+    [self.headPicImgV sd_setImageWithURL:[NSURL URLWithString:model.creatorHeadPic] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
     self.nickNameLabel.text = model.creatorNickName;
     [self.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil options:SDWebImageRefreshCached];
     self.cityLabel.text = [NSString stringWithFormat:@"%@%@", model.city, model.region];
