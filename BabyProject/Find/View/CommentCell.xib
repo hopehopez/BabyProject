@@ -68,7 +68,7 @@
                 <outlet property="nameLabel" destination="MPD-Wo-aIg" id="abc-dW-Hka"/>
                 <outlet property="timeLabel" destination="Nk1-So-bAx" id="xjA-nN-W4e"/>
             </connections>
-            <point key="canvasLocation" x="269.5" y="702.5"/>
+            <point key="canvasLocation" x="241.5" y="349.5"/>
         </tableViewCell>
     </objects>
 </document>

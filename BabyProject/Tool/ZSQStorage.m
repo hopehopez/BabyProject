@@ -12,14 +12,11 @@
 @implementation ZSQStorage
 
 #pragma  mark - 获取沙盒路径
-+ (NSString *)getPath:(NSString *)fileName{
++ (NSString *)getDocumentsPath{
     NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = array[0];
-    NSString *path = [documentPath stringByAppendingPathComponent:fileName];
-    
-    return path;
+    return documentPath;
 }
-
 
 #pragma mark - 设置为已安装
 + (void)install{

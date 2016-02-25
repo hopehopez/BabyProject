@@ -45,4 +45,10 @@
  *  获取当前登录用户
  */
 + (NSDictionary *)getCurrentUser;
+
+/*
+ 获取沙盒中Documents的路径
+ */
++ (NSString *)getDocumentsPath;
+
 @end

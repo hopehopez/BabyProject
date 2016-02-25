@@ -25,16 +25,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    LoginViewController *loginView = [[LoginViewController alloc] init];
-//    
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
-//    [self presentViewController:nav animated:YES completion:nil];
-
+    //    LoginViewController *loginView = [[LoginViewController alloc] init];
+    //
+    //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginView];
+    //    [self presentViewController:nav animated:YES completion:nil];
+    
     
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor lightGrayColor];
     _dataArray = [NSMutableArray array];
     
+    NSLog(@"%@", NSHomeDirectory());
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -79,6 +80,19 @@
     [BaseHttpClient httpType:GET andURL:FIND_SQUARE_URL andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
         
         [_tableView.header endRefreshing];
+        
+        NSString *documentsPath = [ZSQStorage getDocumentsPath];
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"diaosi2.plist"];
+        NSLog(@"%@", filePath);
+        
+        if (data) {
+            
+            NSDictionary *dict = data;
+            [dict writeToFile:filePath atomically:YES];
+            
+        }else {
+            data = [NSDictionary dictionaryWithContentsOfFile:filePath];
+        }
         
         NSDictionary *data2 = data[@"data"];
         
@@ -132,7 +146,7 @@
     else{
         return 0;
     }
-
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
@@ -194,14 +208,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)SegmentChange:(UISegmentedControl *)sender {
 }

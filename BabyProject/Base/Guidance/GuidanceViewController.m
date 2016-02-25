@@ -78,7 +78,7 @@
     
     _scrollView.pagingEnabled = YES;
     //开启翻页模式
-    
+
     _scrollView.delegate = self;
     //设置代理
     
