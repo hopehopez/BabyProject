@@ -7,14 +7,20 @@
 //
 
 #import "TimerLineViewController.h"
+#import "TimerHeaderViewController.h"
 #import "PhotoCell1.h"
+#import "SummaryModel.h"
+#define NUMBER 20
+static NSInteger _page;
 @interface TimerLineViewController ()<UITableViewDataSource, UITableViewDelegate>{
 
     NSMutableArray *_dataArray;
+    TimerHeaderViewController *_headerController;
     
 }
 
 @end
+
 
 @implementation TimerLineViewController
 
@@ -22,10 +28,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    _page = 0;
+    
+    _dataArray = [NSMutableArray array];
     self.tv.delegate = self;
     self.tv.dataSource = self;
     
+    [self setHeadView];
     
+    [self registCell];
+    
+    [self addRefresh];
+    
+}
+
+#pragma mark - 添加头视图
+- (void)setHeadView{
+    _headerController = [[TimerHeaderViewController alloc] init];
+    _headerController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 188);
+    self.tv.tableHeaderView = _headerController.view;
+    //[self.view addSubview:_headerController.view];
 }
 
 #pragma mark - 注册cell
@@ -54,6 +76,7 @@
     [self.tv.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _page++;
         [self loadData];
         [self.tv.footer endRefreshing];
     }];
@@ -65,19 +88,60 @@
 
 #pragma mark - 下载数据
 - (void)loadData{
-//    NSString *url = [NSString stringWithFormat:FIND_TAG_FEEDS, self.ID, _page * NUMBER];
-//    [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
-//        
-//        [self.tv.header endRefreshing];
-//
-//        
-//        
-//        [self.tv reloadData];
-//
-//        
-//    } andFailBlock:^(NSURL *url, NSError *error) {
-//        NSLog(@"%@", error.localizedDescription);
-//    }];
+    NSString *url1 = [NSString stringWithFormat:USER_INFO, self.model.creator];
+    [BaseHttpClient httpType:GET andURL:url1 andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
+        
+        [self.tv.header endRefreshing];
+
+        NSDictionary *dict = data[@"data"]; 
+        
+        NSArray *babies = dict[@"babies"];
+        NSDictionary *baby = babies[0];
+        //宝宝昵称
+        _headerController.babyNameLabel.text = baby[@"nickName"];
+        //宝宝头像
+        //[_headerController.babyImgV sd_setImageWithURL:[NSURL URLWithString:baby[@"headPic"]] placeholderImage:[UIImage imageNamed:@"default_baby"] options:SDWebImageRefreshCached];
+        
+        NSDictionary *parent = dict[@"parent"];
+        //用户昵称
+        _headerController.userNameLabel.text = parent[@"nickName"];
+        //用户头像
+        [_headerController.userImgV sd_setImageWithURL:[NSURL URLWithString:parent[@"headPic"]] placeholderImage:[UIImage imageNamed:@"default_user"] options:SDWebImageRefreshCached];
+        NSString *gender = [parent[@"gender"] stringValue];
+        //称呼
+        if ([gender isEqualToString:@"1"]) {
+            _headerController.sexLabel.text = @"妈妈";
+        }else{
+            _headerController.sexLabel.text = @"爸爸";
+        }
+        
+    } andFailBlock:^(NSURL *url, NSError *error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+    
+    
+    NSString *url2 = [NSString stringWithFormat:TIME_LINE_PHOTOS, self.model.babyId, _page * NUMBER];
+    [BaseHttpClient httpType:GET andURL:url2 andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
+        
+        [self.tv.header endRefreshing];
+        
+        NSArray *array = data[@"data"];
+        
+        for (NSDictionary *dict in array) {
+            NSDictionary *dict1 = dict[@"data"];
+            SummaryModel *model = [[SummaryModel alloc] initWithDictionary:dict1 error:nil];
+            model.type = dict1[@"type"];
+            model.timeLine = dict1[@"timeLine"];
+            
+            [_dataArray addObject:model];
+        }
+        [self.tv reloadData];
+        
+    } andFailBlock:^(NSURL *url, NSError *error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+
+    
 }
 #pragma mark - tv data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -85,10 +149,17 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PhotoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
+    PhotoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell1"];
+    
+    SummaryModel *model = _dataArray[indexPath.row];
+    
+    [cell.imgv1 sd_setImageWithURL:[NSURL URLWithString:model.imageUrls] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
     
     return cell;
     
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 400;
 }
 
 

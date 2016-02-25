@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerHeaderViewController">
@@ -35,20 +35,19 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIW-EC-TZh">
-                                    <rect key="frame" x="97" y="8" width="61" height="21"/>
+                                    <rect key="frame" x="97" y="8" width="224" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="61" id="7uY-OB-e2m"/>
-                                        <constraint firstAttribute="height" constant="21" id="O0C-QT-skZ"/>
+                                        <constraint firstAttribute="height" constant="21" id="HiH-2n-CSE"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.99607843139999996" green="0.3803921569" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP3-Ht-dPj">
-                                    <rect key="frame" x="166" y="8" width="42" height="21"/>
+                                    <rect key="frame" x="97" y="43" width="42" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="vhh-6O-512"/>
-                                        <constraint firstAttribute="width" constant="42" id="wTb-oy-QgV"/>
+                                        <constraint firstAttribute="height" constant="21" id="ewK-9w-Psb"/>
+                                        <constraint firstAttribute="width" constant="42" id="xSO-Yf-KAV"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,13 +56,14 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="oIW-EC-TZh" firstAttribute="top" secondItem="OFk-Ds-R0V" secondAttribute="top" constant="8" id="HZB-5B-uSA"/>
+                                <constraint firstItem="uP3-Ht-dPj" firstAttribute="leading" secondItem="ic4-0N-WHK" secondAttribute="trailing" constant="8" id="6Xq-EG-7a5"/>
+                                <constraint firstItem="uP3-Ht-dPj" firstAttribute="top" secondItem="oIW-EC-TZh" secondAttribute="bottom" constant="14" id="6mF-FQ-JMK"/>
+                                <constraint firstItem="oIW-EC-TZh" firstAttribute="top" secondItem="OFk-Ds-R0V" secondAttribute="top" constant="8" id="N6D-dL-Xgl"/>
                                 <constraint firstItem="ic4-0N-WHK" firstAttribute="leading" secondItem="OFk-Ds-R0V" secondAttribute="leading" constant="8" id="OLw-Ou-v6i"/>
                                 <constraint firstAttribute="height" constant="97" id="Vh4-ob-3h1"/>
+                                <constraint firstAttribute="trailing" secondItem="oIW-EC-TZh" secondAttribute="trailing" constant="38" id="VqN-mI-NEa"/>
                                 <constraint firstItem="ic4-0N-WHK" firstAttribute="top" secondItem="OFk-Ds-R0V" secondAttribute="top" constant="8" id="cAa-NY-01e"/>
-                                <constraint firstItem="uP3-Ht-dPj" firstAttribute="top" secondItem="OFk-Ds-R0V" secondAttribute="top" constant="8" id="fZc-w3-kNc"/>
-                                <constraint firstItem="uP3-Ht-dPj" firstAttribute="leading" secondItem="oIW-EC-TZh" secondAttribute="trailing" constant="8" id="w7q-1e-V2G"/>
-                                <constraint firstItem="oIW-EC-TZh" firstAttribute="leading" secondItem="ic4-0N-WHK" secondAttribute="trailing" constant="8" id="wi0-dP-OK2"/>
+                                <constraint firstItem="oIW-EC-TZh" firstAttribute="leading" secondItem="ic4-0N-WHK" secondAttribute="trailing" constant="8" id="xS4-o1-MsF"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_baby.png" translatesAutoresizingMaskIntoConstraints="NO" id="j6i-JU-NYj">

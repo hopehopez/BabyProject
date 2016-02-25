@@ -26,6 +26,13 @@
 //相片评论
 #define PHOTO_COMMENTS @"http://api.xiaobudian.me/childhood/api/feeds/%@/comments?page=%ld&size=20"
 
+//用户信息
+#define USER_INFO @"http://api.xiaobudian.me/childhood/api/others/%@"
+//时间轴图片
+#define TIME_LINE_PHOTOS  @"http://api.xiaobudian.me/childhood/api/babies/%@/feeds/summary?from=%ld&size=20"
+//事件轴图片详情
+#define PHOTO_DETAIL @"http://api.xiaobudian.me/childhood/api/babies/%@/feeds/%@?from=%ld&size=200"
+
 
 ////动态_精选
 #define FEEDS_FEATURE  @"http://api.xiaobudian.me/childhood/api/featured/categories/%@/feeds?from=%ld&size=20"

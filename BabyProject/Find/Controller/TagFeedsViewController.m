@@ -330,10 +330,9 @@
     
     PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
     NSMutableArray *mArray = [_dataArray mutableCopy];
-    [mArray removeObjectAtIndex:0];
     
     photoController.feedsArray = mArray;
-    photoController.index = cell.row - 1;
+    photoController.index = cell.row;
     photoController.isComment = YES;
     
     [self.navigationController pushViewController:photoController animated:YES];
@@ -344,6 +343,11 @@
     
 }
 - (void)detailInfo:(FeedCell *)cell{
+    
+    TimerLineViewController *timerController = [[TimerLineViewController alloc] init];
+    FeedModel *model = _dataArray[cell.row];
+    timerController.model = model;
+    [self.navigationController pushViewController:timerController animated:YES];
     
 }
 

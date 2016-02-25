@@ -35,8 +35,6 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     _dataArray = [NSMutableArray array];
     
-    NSLog(@"%@", NSHomeDirectory());
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -83,7 +81,7 @@
         
         NSString *documentsPath = [ZSQStorage getDocumentsPath];
         NSString *filePath = [documentsPath stringByAppendingPathComponent:@"diaosi2.plist"];
-        NSLog(@"%@", filePath);
+       // NSLog(@"%@", filePath);
         
         if (data) {
             

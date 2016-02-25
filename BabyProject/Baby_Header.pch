@@ -45,5 +45,6 @@
 #import "LoginViewController.h"
 #import "CameraViewController.h"
 #import "PhotoDetailViewController.h"
+#import "TimerLineViewController.h"
 
 #endif
