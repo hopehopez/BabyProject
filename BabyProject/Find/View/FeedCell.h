@@ -12,6 +12,7 @@
 
 @protocol FeedCellDelegate <NSObject>
 
+- (void)detailInfo:(FeedCell *)cell;
 - (void)addFollow:(FeedCell *)cell;
 - (void)addGood:(FeedCell *)cell;
 - (void)addComment:(FeedCell *)cell;
@@ -36,6 +37,7 @@
 - (IBAction)goodClick:(id)sender;
 - (IBAction)commentClick:(id)sender;
 - (IBAction)shareClick:(id)sender;
+- (IBAction)detailBtn:(UIButton *)sender;
 
 @property (nonatomic, strong) id <FeedCellDelegate> delegate;
 

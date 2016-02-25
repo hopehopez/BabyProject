@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *commentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 
 @property (nonatomic, strong) CommentModel1 *model;

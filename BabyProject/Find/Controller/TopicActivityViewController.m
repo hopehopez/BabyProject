@@ -9,7 +9,6 @@
 #define NUMBER 18
 
 #import "TopicActivityViewController.h"
-#import "HeadCell.h"
 #import "HeaderView.h"
 @interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
     NSMutableArray *_dataArray;
@@ -61,10 +60,7 @@
     
 
     [self addRefresh];
-    
-    [self loadData];
-    
-    
+  
 }
 
 #pragma mart - 设置头视图
@@ -122,14 +118,14 @@
     [_headView addSubview:_countLabel];
     
     //显示样式控制按钮
-    _menuBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    _menuBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 20, 20)];
     [_menuBtn setImage:[UIImage imageNamed:@"btn_menu_n"] forState:UIControlStateNormal];
     [_menuBtn setImage:[UIImage imageNamed:@"btn_menu_h"] forState:UIControlStateSelected];
     [_menuBtn addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
     _menuBtn.selected = YES;
     [_headView addSubview:_menuBtn];
     
-    _listBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    _listBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 20, 20)];
     [_listBtn setImage:[UIImage imageNamed:@"btn_list_n"] forState:UIControlStateNormal];
     [_listBtn setImage:[UIImage imageNamed:@"btn_list_h"] forState:UIControlStateSelected];
     [_listBtn addTarget:self action:@selector(showList:) forControlEvents:UIControlEventTouchUpInside];
@@ -192,14 +188,14 @@
     [_headView2 addSubview:_countLabel2];
     
     //显示样式控制按钮
-    _menuBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    _menuBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 20, 20)];
     [_menuBtn2 setImage:[UIImage imageNamed:@"btn_menu_n.png"] forState:UIControlStateNormal];
     [_menuBtn2 setImage:[UIImage imageNamed:@"btn_menu_h.png"] forState:UIControlStateSelected];
     [_menuBtn2 addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
     _menuBtn2.selected = YES;
     [_headView2 addSubview:_menuBtn2];
     
-    _listBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 30, 30)];
+    _listBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 13 - 20 - 8 - 20, CGRectGetMaxY(detailLabel.frame) + 20, 20, 20)];
     [_listBtn2 setImage:[UIImage imageNamed:@"btn_list_n.png"] forState:UIControlStateNormal];
     [_listBtn2 setImage:[UIImage imageNamed:@"btn_list_h.png"] forState:UIControlStateSelected];
     [_listBtn2 addTarget:self action:@selector(showList:) forControlEvents:UIControlEventTouchUpInside];
@@ -213,9 +209,10 @@
 #pragma mark - 切换视图
 - (void)showMenu:(UIButton *)sender{
     
-    
     _menuBtn.selected = YES;
     _listBtn.selected = NO;
+    _menuBtn2.selected = YES;
+    _listBtn2.selected = NO;
     self.tv.hidden = YES;
     self.cv.hidden = NO;
     
@@ -225,6 +222,8 @@
     
     _menuBtn.selected = NO;
     _listBtn.selected = YES;
+    _menuBtn2.selected = NO;
+    _listBtn2.selected = YES;
     self.tv.hidden = NO;
     self.cv.hidden = YES;
     
@@ -238,8 +237,7 @@
     
     UINib *iconNib = [UINib nibWithNibName:@"IconCell" bundle:nil];
     [self.cv registerNib:iconNib forCellWithReuseIdentifier:@"IconCell"];
-    
-    
+
     [self.cv registerNib: [UINib nibWithNibName:@"HeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeadView"];
 }
 
@@ -249,14 +247,16 @@
         
         [_dataArray removeAllObjects];
         [self loadData];
-        [self.tv.header endRefreshing];
+        //[self.tv.header endRefreshing];
     }];
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
-    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    [header setTitle:@"正在刷新数据" forState:MJRefreshStateRefreshing];
     
     self.tv.header = header;
     self.cv.header = header;
+    [self.tv.header beginRefreshing];
+    [self.cv.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
@@ -270,7 +270,6 @@
 //  返回头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
     //如果是头视图
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
@@ -283,6 +282,29 @@
     return nil;
 }
 
+#pragma matk - cv dataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
+    FeedModel *model = _dataArray[indexPath.row];
+    [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
+    
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    photoController.feedsArray = mArray;
+    photoController.index = indexPath.row;
+    [self.navigationController pushViewController:photoController animated:YES];
+
+}
+#pragma mark - FlowLayout 代理
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
     NSString *str = self.model.descriptionK;
@@ -290,32 +312,22 @@
 
     return CGSizeMake(SCREEN_WIDTH, 280 + size.height);
 }
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _dataArray.count;
-    
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+   
+    //返回值是一个CGSize 表示cell的大小
+    return CGSizeMake((SCREEN_WIDTH - 0)/3, (SCREEN_WIDTH - 0)/3);
 }
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
-    
-    FeedModel *model = _dataArray[indexPath.row];
-    
-    [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
-    
-    return cell; 
-}
+
 
 #pragma mark - 下载数据
 - (void)loadData{
     NSString *url = [NSString stringWithFormat:FIND_LATEST_TOPICS, self.model.addonId, _page * NUMBER];
     [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
         
+        [self.tv.header endRefreshing];
+        [self.cv.header endRefreshing];
         
         NSDictionary *dict = data[@"data"];
-        
         NSNumber *countNum = dict[@"count"];
         
         _countLabel.text = [NSString stringWithFormat:@" %@条记录", countNum];
@@ -329,7 +341,6 @@
             
             [_dataArray addObject:model];
         }
-        
         [self.tv reloadData];
         [self.cv reloadData];
         
@@ -359,7 +370,16 @@
     NSString *str = model.addonTitles;
     CGSize size = [str boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
     return size.height + 150 + SCREEN_WIDTH;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
+    NSMutableArray *mArray = [_dataArray mutableCopy];
+    
+    photoController.feedsArray = mArray;
+    photoController.index = indexPath.row;
+    
+    [self.navigationController pushViewController:photoController animated:YES];
 }
 
 #pragma mark - FeedCell 的代理

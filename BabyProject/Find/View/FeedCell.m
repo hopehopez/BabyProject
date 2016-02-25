@@ -135,4 +135,12 @@
         
     }
 }
+
+- (IBAction)detailBtn:(UIButton *)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(detailInfo:)]) {
+        [self.delegate performSelector:@selector(detailInfo:) withObject:self];
+    }
+    
+}
 @end

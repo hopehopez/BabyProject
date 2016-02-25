@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagFeedsViewController">
             <connections>
+                <outlet property="cv" destination="lR2-0N-eo7" id="W1b-vv-DJR"/>
                 <outlet property="tagLabel" destination="pmC-qM-Uer" id="ZkN-lw-7ls"/>
                 <outlet property="tv" destination="Yoe-sf-SWv" id="fEs-nL-OkD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -84,6 +85,15 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lR2-0N-eo7">
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uf6-zD-um9">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -92,11 +102,13 @@
                 <constraint firstItem="68p-iV-Zs3" firstAttribute="top" secondItem="Yoe-sf-SWv" secondAttribute="bottom" id="3f6-4Z-h5c"/>
                 <constraint firstItem="Yoe-sf-SWv" firstAttribute="top" secondItem="y7l-u4-EN4" secondAttribute="bottom" id="BkA-Jn-e5A"/>
                 <constraint firstItem="wxq-XH-Yvd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="C8L-wZ-lQM"/>
+                <constraint firstAttribute="trailing" secondItem="lR2-0N-eo7" secondAttribute="trailing" id="Gbe-ek-UW4"/>
                 <constraint firstAttribute="trailing" secondItem="EKm-mp-Kgk" secondAttribute="trailing" id="KCV-0m-hUd"/>
                 <constraint firstItem="sLK-g9-ssx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="L0d-cP-utV"/>
                 <constraint firstItem="pmC-qM-Uer" firstAttribute="top" secondItem="EKm-mp-Kgk" secondAttribute="bottom" id="LIN-1a-uzd"/>
                 <constraint firstItem="pmC-qM-Uer" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="LfR-UD-vUg"/>
                 <constraint firstAttribute="trailing" secondItem="68p-iV-Zs3" secondAttribute="trailing" id="N15-Hu-lGX"/>
+                <constraint firstItem="lR2-0N-eo7" firstAttribute="top" secondItem="y7l-u4-EN4" secondAttribute="bottom" id="TfK-Ld-X6Q"/>
                 <constraint firstAttribute="trailing" secondItem="ehO-Q0-UgO" secondAttribute="trailing" id="VhM-2d-Bd6"/>
                 <constraint firstItem="ehO-Q0-UgO" firstAttribute="top" secondItem="Yoe-sf-SWv" secondAttribute="bottom" id="bP7-94-Pos"/>
                 <constraint firstItem="y7l-u4-EN4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dIg-8M-eQI"/>
@@ -104,6 +116,7 @@
                 <constraint firstItem="Yoe-sf-SWv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dWW-Do-ADD"/>
                 <constraint firstItem="y7l-u4-EN4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i0B-CG-gYO"/>
                 <constraint firstItem="sLK-g9-ssx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="kU1-Su-lhF"/>
+                <constraint firstItem="68p-iV-Zs3" firstAttribute="top" secondItem="lR2-0N-eo7" secondAttribute="bottom" id="mOR-jX-Q1F"/>
                 <constraint firstAttribute="trailing" secondItem="y7l-u4-EN4" secondAttribute="trailing" id="nek-qn-q0z"/>
                 <constraint firstAttribute="centerX" secondItem="pmC-qM-Uer" secondAttribute="centerX" id="pI1-yN-HJu"/>
                 <constraint firstItem="ehO-Q0-UgO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pt4-Y9-cMf"/>
@@ -111,6 +124,7 @@
                 <constraint firstItem="EKm-mp-Kgk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vNI-ga-sat"/>
                 <constraint firstAttribute="trailing" secondItem="Yoe-sf-SWv" secondAttribute="trailing" id="w36-ru-QPz"/>
                 <constraint firstAttribute="bottom" secondItem="68p-iV-Zs3" secondAttribute="bottom" constant="48" id="zOb-qr-ZqY"/>
+                <constraint firstItem="lR2-0N-eo7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zpj-mH-gaT"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="234.5" y="320.5"/>

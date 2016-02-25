@@ -10,13 +10,6 @@
 
 @interface IconCell : UICollectionViewCell
 
-//@property (nonatomic, strong) UILabel *title;
-////展示文字
-//
-//@property (nonatomic, strong) UIImageView *iconImageView;
-////展示图片
-//
-//- (void)reloadCellWithImage:(NSString *)imageName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
 @end

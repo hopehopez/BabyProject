@@ -229,7 +229,7 @@ static NSInteger k = 1;
 
 - (IBAction)backBtn:(id)sender {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 - (IBAction)sendBtn:(id)sender {

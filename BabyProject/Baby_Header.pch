@@ -27,6 +27,8 @@
 #import "UIImageView+WebCache.h"
 #import "Reachability.h"
 #import "MJRefresh.h"
+#import "SVProgressHUD.h"
+#import "AJNotificationView.h"
 
 //model
 #import "ActivityModel.h"
@@ -37,7 +39,6 @@
 
 //自定义Cell
 #import "FeedCell.h"
-#import "CountCell.h"
 #import "IconCell.h"
 
 //常用controller

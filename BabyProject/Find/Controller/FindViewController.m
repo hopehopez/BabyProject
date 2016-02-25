@@ -41,7 +41,7 @@
     
     [self registCell];
     
-    [self loadData];
+    //[self loadData];
     
     [self addRefresh];
 }
@@ -55,9 +55,11 @@
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
     
-    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    [header setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
     
     _tableView.header = header;
+    
+    [_tableView.header beginRefreshing];
 }
 
 #pragma mark - 注册cell
@@ -75,6 +77,8 @@
 #pragma mark - 下载数据
 - (void)loadData{
     [BaseHttpClient httpType:GET andURL:FIND_SQUARE_URL andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
+        
+        [_tableView.header endRefreshing];
         
         NSDictionary *data2 = data[@"data"];
         

@@ -59,6 +59,7 @@
     [header setTitle:@"正在刷新数据" forState:MJRefreshStateRefreshing];
     
     self.tv.header = header;
+    [self.tv.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
@@ -74,6 +75,8 @@
      NSString *url = [NSString stringWithFormat:FEEDS_FEATURE, self.catagory, _page * NUMBER];
     [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
 
+        [self.tv.header endRefreshing];
+        
         NSArray *feedsArray = data[@"data"];
         for (NSDictionary *dict1 in feedsArray) {
             NSDictionary *feedDict = dict1[@"feed"];

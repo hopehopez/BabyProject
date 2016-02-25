@@ -32,8 +32,6 @@
     
     [self registCell];
     
-    [self loadData];
-    
     [self addRefresh];
 }
 
@@ -54,9 +52,11 @@
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
     
-    [header setTitle:@"快松手 要刷新啦" forState:MJRefreshStateRefreshing];
+    [header setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
     
     self.tabView.header = header;
+    
+    [self.tabView.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
@@ -73,6 +73,7 @@
     
     [BaseHttpClient httpType:GET andURL:url andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
         
+        [self.tabView.header endRefreshing];
         NSArray *array = data[@"data"];
         for (NSDictionary *dict in array) {
             ActivityModel *model = [[ActivityModel alloc] initWithDictionary:dict error:nil];

@@ -36,8 +36,7 @@
         
         _block = block;
         
-    }
-    
+    }  
     return self;
 }
 
@@ -90,9 +89,9 @@
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * _imagesArr.count - 100 - 20, SCREEN_HEIGHT - 50 - 20, 100, 50)];
     
     [btn setTitle:@"进入应用"forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
    
-    [btn setBackgroundImage:[UIImage imageNamed:@"enter.png"] forState:UIControlStateNormal];
+    //[btn setBackgroundImage:[UIImage imageNamed:@"enter.png"] forState:UIControlStateNormal];
     
     [btn addTarget:self action:@selector(enterApp:) forControlEvents:UIControlEventTouchUpInside];
     

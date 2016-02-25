@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 - (IBAction)backClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tv;
+@property (weak, nonatomic) IBOutlet UICollectionView *cv;
 
 - (IBAction)addClick:(id)sender;
 

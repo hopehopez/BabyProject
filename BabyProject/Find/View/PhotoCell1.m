@@ -1,14 +1,14 @@
 //
-//  HeadCell.m
+//  PhotoCell1.m
 //  BabyProject
 //
-//  Created by 张树青 on 16/2/17.
-//  Copyright (c) 2016年 zsq. All rights reserved.
+//  Created by 张树青 on 16/2/25.
+//  Copyright © 2016年 zsq. All rights reserved.
 //
 
-#import "HeadCell.h"
+#import "PhotoCell1.h"
 
-@implementation HeadCell
+@implementation PhotoCell1
 
 - (void)awakeFromNib {
     // Initialization code
