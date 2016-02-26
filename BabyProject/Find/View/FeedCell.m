@@ -24,6 +24,7 @@
 
 - (void)setModel:(FeedModel *)model{
     
+    
     [self.headPicImgV sd_setImageWithURL:[NSURL URLWithString:model.creatorHeadPic] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
     self.nickNameLabel.text = model.creatorNickName;
     [self.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil options:SDWebImageRefreshCached];
@@ -100,10 +101,6 @@
 
 - (IBAction)followClick:(id)sender {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(addFollow:)]) {
-        [self.delegate performSelector:@selector(addFollow:) withObject:self];
-        
-    }
     
     
 }
@@ -113,33 +110,51 @@
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(addGood:)]) {
         [self.delegate performSelector:@selector(addGood:) withObject:self];
-        
     }
-    
     
 }
 
 - (IBAction)commentClick:(id)sender {
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(addComment:)]) {
         [self.delegate performSelector:@selector(addComment:) withObject:self];
-        
     }
+    
 }
 
 - (IBAction)shareClick:(id)sender {
+
+    ShareViewController *shareControler = [[ShareViewController alloc] init];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(addShare:)]) {
-        [self.delegate performSelector:@selector(addShare:) withObject:self];
+   // shareControler.view.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    CGRect rect1 = shareControler.shareView.frame;
+    CGRect rect2 = shareControler.cancelBtn.frame;
+    
+    shareControler.shareView.frame = CGRectMake(rect1.origin.x, rect1.origin.y + 280, rect1.size.width, rect1.size.height);
+    shareControler.cancelBtn.frame = CGRectMake(rect2.origin.x, rect2.origin.y + 280, rect2.size.width, rect2.size.height);
+    
+    [self.controller.view addSubview:shareControler.view];
+    [self.controller addChildViewController:shareControler];
+    
+    [UIView animateWithDuration:5 animations:^{
         
-        
-    }
+        shareControler.shareView.frame = rect1;
+        shareControler.cancelBtn.frame = rect2;
+
+    }];
+    
 }
 
 - (IBAction)detailBtn:(UIButton *)sender {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(detailInfo:)]) {
-        [self.delegate performSelector:@selector(detailInfo:) withObject:self];
+    if (self.controller) {
+        
+        TimerLineViewController *timerController = [[TimerLineViewController alloc] init];
+        FeedModel *model = self.model2;
+        
+        timerController.model = model;
+        [self.controller.navigationController pushViewController:timerController animated:YES];
+        
     }
     
 }

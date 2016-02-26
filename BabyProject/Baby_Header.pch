@@ -46,5 +46,6 @@
 #import "CameraViewController.h"
 #import "PhotoDetailViewController.h"
 #import "TimerLineViewController.h"
+#import "ShareViewController.h"
 
 #endif

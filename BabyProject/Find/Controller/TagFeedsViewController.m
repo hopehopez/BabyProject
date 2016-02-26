@@ -10,7 +10,7 @@
 
 #import "TagFeedsViewController.h"
 #import "HeaderView.h"
-@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
+@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -248,13 +248,16 @@
     return _dataArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
-    FeedModel *model = _dataArray[indexPath.row];
-    [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
-    
-    return cell;
-}
+    if (_dataArray.count >0) {
+        IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
+        FeedModel *model = _dataArray[indexPath.row];
+        [cell.imgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
+        
+        return cell;
+
+    }
+    return nil;
+   }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     PhotoDetailViewController *photoController = [[PhotoDetailViewController alloc] init];
@@ -286,12 +289,13 @@
     
     
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
-    FeedModel *model = _dataArray[indexPath.row];
-    cell.delegate = self;
-    [cell setModel:model];
+
+    cell.controller = self;
+    cell.model = _dataArray[indexPath.row] ;
+    cell.model2 = _dataArray[indexPath.row];
     cell.row = indexPath.row;
-    return cell;
     
+    return cell;
 }
 
 #pragma mark - tv delegate
@@ -344,12 +348,10 @@
 }
 - (void)detailInfo:(FeedCell *)cell{
     
-    TimerLineViewController *timerController = [[TimerLineViewController alloc] init];
-    FeedModel *model = _dataArray[cell.row];
-    timerController.model = model;
-    [self.navigationController pushViewController:timerController animated:YES];
+    
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

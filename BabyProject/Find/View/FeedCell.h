@@ -12,8 +12,6 @@
 
 @protocol FeedCellDelegate <NSObject>
 
-- (void)detailInfo:(FeedCell *)cell;
-- (void)addFollow:(FeedCell *)cell;
 - (void)addGood:(FeedCell *)cell;
 - (void)addComment:(FeedCell *)cell;
 - (void)addShare:(FeedCell *)cell;
@@ -39,9 +37,10 @@
 - (IBAction)shareClick:(id)sender;
 - (IBAction)detailBtn:(UIButton *)sender;
 
-@property (nonatomic, strong) id <FeedCellDelegate> delegate;
-
 @property (nonatomic, strong) FeedModel *model;
+@property (nonatomic, strong) FeedModel *model2;
+@property (nonatomic, weak) id <FeedCellDelegate> delegate;
+@property (nonatomic, strong) UIViewController *controller;
 @property (nonatomic, assign) NSInteger row;
 
 @end

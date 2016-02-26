@@ -45,7 +45,7 @@ static NSInteger _page;
 #pragma mark - 添加头视图
 - (void)setHeadView{
     _headerController = [[TimerHeaderViewController alloc] init];
-    _headerController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 188);
+    _headerController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 232);
     self.tv.tableHeaderView = _headerController.view;
     //[self.view addSubview:_headerController.view];
 }
@@ -63,16 +63,14 @@ static NSInteger _page;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [_dataArray removeAllObjects];
+        _page = 0;
         [self loadData];
-        [self.tv.header endRefreshing];
+        
     }];
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
-    
     [header setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
-    
     self.tv.header = header;
-    
     [self.tv.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -100,7 +98,11 @@ static NSInteger _page;
         //宝宝昵称
         _headerController.babyNameLabel.text = baby[@"nickName"];
         //宝宝头像
-        //[_headerController.babyImgV sd_setImageWithURL:[NSURL URLWithString:baby[@"headPic"]] placeholderImage:[UIImage imageNamed:@"default_baby"] options:SDWebImageRefreshCached];
+        
+        if (![baby[@"headPic"] isKindOfClass:[NSNull class]]) {
+            [_headerController.babyImgV sd_setImageWithURL:[NSURL URLWithString:baby[@"headPic"]] placeholderImage:[UIImage imageNamed:@"default_baby"] options:SDWebImageRefreshCached];
+        }
+        
         
         NSDictionary *parent = dict[@"parent"];
         //用户昵称
@@ -135,6 +137,7 @@ static NSInteger _page;
             
             [_dataArray addObject:model];
         }
+        
         [self.tv reloadData];
         
     } andFailBlock:^(NSURL *url, NSError *error) {
@@ -149,13 +152,20 @@ static NSInteger _page;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PhotoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell1"];
-    
-    SummaryModel *model = _dataArray[indexPath.row];
-    
-    [cell.imgv1 sd_setImageWithURL:[NSURL URLWithString:model.imageUrls] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
-    
-    return cell;
+    if (_dataArray.count>0) {
+        PhotoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell1"];
+        
+        SummaryModel *model = _dataArray[indexPath.row];
+        
+        NSArray *urls = [model.imageUrls componentsSeparatedByString:@","];
+        
+        [cell.imgv1 sd_setImageWithURL:[NSURL URLWithString:urls[0]] placeholderImage:[UIImage imageNamed:@"default_feed"] options:SDWebImageRefreshCached];
+        
+        return cell;
+
+    } else {
+        return nil;
+   }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -180,5 +190,9 @@ static NSInteger _page;
 */
 
 - (IBAction)backClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
+
 @end

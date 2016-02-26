@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerLineViewController">
@@ -16,6 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_babybg1242px.png" translatesAutoresizingMaskIntoConstraints="NO" id="nzu-cq-Ytb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar_i5.png" translatesAutoresizingMaskIntoConstraints="NO" id="RSZ-RY-6aJ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <constraints>
@@ -39,7 +43,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-Fc-55X">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-Fc-55X">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -57,7 +61,8 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bb9-oO-qWx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="BDg-U3-XyJ"/>
                 <constraint firstAttribute="trailing" secondItem="MTU-Fc-55X" secondAttribute="trailing" id="EaF-1A-2xe"/>
@@ -66,8 +71,12 @@
                 <constraint firstItem="ucN-rQ-VcZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Ig8-lf-XEh"/>
                 <constraint firstItem="e8W-3O-lln" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="L9S-dV-TlG"/>
                 <constraint firstItem="e8W-3O-lln" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="NNj-ey-uFh"/>
+                <constraint firstAttribute="trailing" secondItem="nzu-cq-Ytb" secondAttribute="trailing" id="TGt-iW-hIr"/>
+                <constraint firstAttribute="bottom" secondItem="nzu-cq-Ytb" secondAttribute="bottom" id="WgG-fO-OxF"/>
                 <constraint firstItem="RSZ-RY-6aJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Xy5-r2-Ti1"/>
                 <constraint firstItem="RSZ-RY-6aJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bKh-j0-dPY"/>
+                <constraint firstItem="nzu-cq-Ytb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="coV-0O-7it"/>
+                <constraint firstItem="nzu-cq-Ytb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eUo-IW-2Ii"/>
                 <constraint firstAttribute="bottom" secondItem="MTU-Fc-55X" secondAttribute="bottom" id="ezw-uN-I8t"/>
                 <constraint firstAttribute="trailing" secondItem="RSZ-RY-6aJ" secondAttribute="trailing" id="oQl-zL-doK"/>
                 <constraint firstItem="MTU-Fc-55X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xMz-1a-0op"/>
@@ -78,6 +87,7 @@
     </objects>
     <resources>
         <image name="icon_back_red.png" width="10" height="18"/>
+        <image name="img_babybg1242px.png" width="1242" height="1242"/>
         <image name="navbar_i5.png" width="320" height="64"/>
     </resources>
 </document>

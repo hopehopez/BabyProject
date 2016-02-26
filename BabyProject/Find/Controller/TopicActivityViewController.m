@@ -10,7 +10,7 @@
 
 #import "TopicActivityViewController.h"
 #import "HeaderView.h"
-@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
+@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -358,7 +358,7 @@
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
     FeedModel *model = _dataArray[indexPath.row];
     cell.row = indexPath.row;
-    cell.delegate = self;
+    cell.controller = self;
     [cell setModel:model];
     return cell;
 }

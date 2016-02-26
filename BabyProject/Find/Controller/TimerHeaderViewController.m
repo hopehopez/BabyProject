@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view from its nib.
     self.babyImgV.layer.masksToBounds = YES;
     self.babyImgV.layer.cornerRadius = 25;
+    self.view.backgroundColor = [UIColor clearColor];
+    self.headView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {

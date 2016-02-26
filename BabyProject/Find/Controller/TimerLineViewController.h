@@ -12,6 +12,7 @@
 - (IBAction)backClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tv;
 
+
 @property (nonatomic, strong) FeedModel *model;
 
 @end

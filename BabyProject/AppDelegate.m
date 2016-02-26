@@ -14,6 +14,8 @@
 #import "FeedsViewController.h"
 #import "MessagesViewController.h"
 
+#import "UMSocial.h"
+
 @interface AppDelegate ()<UITabBarControllerDelegate>{
     //宝贝视图控制器
     BabyViewController *_babyController;
@@ -46,6 +48,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [UMSocialData setAppKey:@"56cffb8b67e58e98eb002693"];
+    
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     //设置状态栏为白色
@@ -57,10 +62,9 @@
         _window.rootViewController = [self createRootController];
     }else {
         _window.rootViewController = [self createGuidanceView];
-    }
+    }    
     
-    
-    _window.backgroundColor = [UIColor whiteColor];
+    _window.backgroundColor = [UIColor orangeColor];
     
     [_window makeKeyAndVisible];
     

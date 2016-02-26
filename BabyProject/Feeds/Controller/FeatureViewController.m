@@ -8,7 +8,7 @@
 #define NUMBER 20
 #import "FeatureViewController.h"
 
-@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate>{
+@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -105,7 +105,7 @@
         FeedModel *model = _dataArray[indexPath.row];
         cell.jingImagV.hidden = NO;
         cell.row = indexPath.row;
-        cell.delegate = self;
+        cell.controller = self;
         [cell setModel:model];
         
     }
