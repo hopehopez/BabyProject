@@ -15,6 +15,8 @@
 #import "MessagesViewController.h"
 
 #import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaSSOHandler.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>{
     //宝贝视图控制器
@@ -49,7 +51,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    //设置友盟AppKey
     [UMSocialData setAppKey:@"56cffb8b67e58e98eb002693"];
+    
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@"wxd4ef76d0eef7e6d3" appSecret:@"a1c3c4430d23c8cdca9f687593f7bf16" url:nil];
+    
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3585131618"
+                                              secret:@"220b1f3c55afd815b52b996cbb5c8244"
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
     
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -75,7 +88,15 @@
     
 }
 
-
+//设置代理回调
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
+}
 #pragma mark -- 创建引导页
 - (GuidanceViewController *)createGuidanceView{
     

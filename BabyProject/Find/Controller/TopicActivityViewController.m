@@ -10,7 +10,7 @@
 
 #import "TopicActivityViewController.h"
 #import "HeaderView.h"
-@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
+@interface TopicActivityViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, FeedCellDelegate,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -58,7 +58,6 @@
     self.cv.delegate = self;
     self.cv.dataSource = self;
     
-
     [self addRefresh];
   
 }
@@ -261,7 +260,6 @@
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
         [self loadData];
-        [self.tv.footer endRefreshing];
     }];
     self.tv.footer = footer;
     self.cv.footer = footer;
@@ -337,6 +335,13 @@
         for (NSDictionary *dict1 in feedsArray) {
             NSDictionary *feedDict = dict1[@"feed"];
             FeedModel *model = [[FeedModel alloc] initWithDictionary:feedDict error:nil];
+            
+            NSDictionary *share = feedDict[@"share"];
+            NSDictionary *shareUrls = share[@"urls"];
+            ShareModel *shareModel = [[ShareModel alloc] initWithDictionary:shareUrls error:nil];
+            shareModel.text = share[@"text"];
+            shareModel.weiboText = share[@"weiboText"];
+            model.share = shareModel;
             model.hasFollowed = dict1[@"hasFollowed"];
             
             [_dataArray addObject:model];
@@ -357,8 +362,10 @@
     
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
     FeedModel *model = _dataArray[indexPath.row];
+    cell.model2 = model;
     cell.row = indexPath.row;
     cell.controller = self;
+    cell.delegate  = self;
     [cell setModel:model];
     return cell;
 }

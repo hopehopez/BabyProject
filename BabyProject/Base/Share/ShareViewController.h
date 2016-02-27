@@ -9,13 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @interface ShareViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIView *shareView;
-@property (weak, nonatomic) IBOutlet UIImageView *weichatImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *friendQImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *qzoneImgv;
-@property (weak, nonatomic) IBOutlet UIImageView *weiboImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *qqImgV;
+- (IBAction)qzoneBtn:(id)sender;
+- (IBAction)weichatBtn:(id)sender;
+
+- (IBAction)friendQbtn:(id)sender;
+- (IBAction)weiboBtn:(id)sender;
+
+
+- (IBAction)qqBtn:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 - (IBAction)cancelClick:(UIButton *)sender;
+
+@property (nonatomic, strong) ShareModel *shareModel;
+@property (nonatomic, strong) UIImage *img;
 
 @end

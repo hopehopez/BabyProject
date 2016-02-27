@@ -7,6 +7,7 @@
 //
 
 #import "JSONModel.h"
+#import "ShareModel.h"
 
 @interface FeedModel : JSONModel
 @property (nonatomic, copy) NSString <Optional> *addons;
@@ -48,5 +49,7 @@
 @property (nonatomic, copy) NSString <Optional> *weightHeightFeed;
 @property (nonatomic, copy) NSString <Optional> *hasFollowed;
 //@property (nonatomic, copy) NSString <Optional> *likers;
+
+@property (nonatomic, strong) ShareModel *share;
 
 @end

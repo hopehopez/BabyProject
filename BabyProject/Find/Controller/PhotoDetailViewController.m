@@ -141,10 +141,16 @@ static NSInteger k = 1;
 
     if (indexPath.section == 0) {
         FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell"];
-        if (k<=_feedsArray.count) {
+        if (k<=_feedsArray.count){
             cell.model = _feedsArray[_feedsArray.count-k];
+            cell.model2 = _feedsArray[_feedsArray.count-k];
+            cell.row = indexPath.row;
+            cell.controller = self;
         }
         k++;
+        
+       
+        
         return cell;
     }else{
         

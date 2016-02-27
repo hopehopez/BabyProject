@@ -8,7 +8,7 @@
 #define NUMBER 20
 #import "FeatureViewController.h"
 
-@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate>{
+@interface FeatureViewController ()<UITableViewDataSource, UITableViewDelegate, FeedCellDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -81,8 +81,16 @@
         for (NSDictionary *dict1 in feedsArray) {
             NSDictionary *feedDict = dict1[@"feed"];
             FeedModel *model = [[FeedModel alloc] initWithDictionary:feedDict error:nil];
+            NSDictionary *share = feedDict[@"share"];
+            NSDictionary *shareUrls = share[@"urls"];
+            ShareModel *shareModel = [[ShareModel alloc] initWithDictionary:shareUrls error:nil];
+            shareModel.text = share[@"text"];
+            shareModel.weiboText = share[@"weiboText"];
+            model.share = shareModel;
             model.hasFollowed = dict1[@"hasFollowed"];
-            //model.likers = dict1[@"likes"];
+
+            
+            model.hasFollowed = dict1[@"hasFollowed"];
             
             [_dataArray addObject:model];
         }
@@ -104,10 +112,12 @@
     if (_dataArray.count>0) {
         FeedModel *model = _dataArray[indexPath.row];
         cell.jingImagV.hidden = NO;
+        
         cell.row = indexPath.row;
         cell.controller = self;
+        cell.model2 = model;
         [cell setModel:model];
-        
+        cell.delegate = self;
     }
     return cell;
     

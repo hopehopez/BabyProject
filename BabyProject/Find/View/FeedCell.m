@@ -125,22 +125,26 @@
 
     ShareViewController *shareControler = [[ShareViewController alloc] init];
     
-   // shareControler.view.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+    shareControler.shareModel = self.model2.share;
+    shareControler.img = self.imgV.image;
+    
+    //弹出分享页
+    shareControler.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     CGRect rect1 = shareControler.shareView.frame;
     CGRect rect2 = shareControler.cancelBtn.frame;
     
     shareControler.shareView.frame = CGRectMake(rect1.origin.x, rect1.origin.y + 280, rect1.size.width, rect1.size.height);
-    shareControler.cancelBtn.frame = CGRectMake(rect2.origin.x, rect2.origin.y + 280, rect2.size.width, rect2.size.height);
+    shareControler.cancelBtn.frame = CGRectMake(rect2.origin.x, rect2.origin.y + 100, rect2.size.width, rect2.size.height);
     
     [self.controller.view addSubview:shareControler.view];
     [self.controller addChildViewController:shareControler];
     
-    [UIView animateWithDuration:5 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         
         shareControler.shareView.frame = rect1;
         shareControler.cancelBtn.frame = rect2;
-
+        
     }];
     
 }

@@ -106,14 +106,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     ActivityModel *model = _dataArray[indexPath.row];
     TopicActivityViewController *topicController = [[TopicActivityViewController alloc] init];
     topicController.hidesBottomBarWhenPushed = YES;
     topicController.model = model;
     [self.navigationController pushViewController:topicController animated:YES];
 
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

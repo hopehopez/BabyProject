@@ -10,7 +10,7 @@
 
 #import "TagFeedsViewController.h"
 #import "HeaderView.h"
-@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout>{
+@interface TagFeedsViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate , UICollectionViewDelegateFlowLayout, FeedCellDelegate>{
     NSMutableArray *_dataArray;
     NSInteger _page;
     NSInteger _count;
@@ -41,22 +41,19 @@
     self.tv.delegate = self;
     self.tv.dataSource = self;
     
+    [self setHeadView];
+    [self setHeadView2];
+    
+    [self registCell];
+    
     //self.tv.hidden = YES;
     self.cv.hidden = YES;
     self.cv.backgroundColor = [UIColor clearColor];
     self.cv.delegate = self;
     self.cv.dataSource = self;
     
-    [self setHeadView];
-    [self setHeadView2];
-    
-    [self registCell];
-    
     [self addRefresh];
-    
-    [self loadData];
-    
-    
+ 
 }
 
 #pragma mart - 设置头视图
@@ -170,25 +167,21 @@
         
         [_dataArray removeAllObjects];
         [self loadData];
-        [self.tv.header endRefreshing];
+        //[self.tv.header endRefreshing];
     }];
     
     [header setTitle:@"下拉可以刷新" forState:MJRefreshStatePulling];
-    
-    [header setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];
+    [header setTitle:@"正在刷新数据" forState:MJRefreshStateRefreshing];
     
     self.tv.header = header;
     self.cv.header = header;
-    
     [self.tv.header beginRefreshing];
     [self.cv.header beginRefreshing];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page++;
         [self loadData];
-        [self.tv.footer endRefreshing];
     }];
-    
     self.tv.footer = footer;
     self.cv.footer = footer;
 }
@@ -214,7 +207,16 @@
         NSArray *feedsArray = dict[@"feeds"];
         for (NSDictionary *dict1 in feedsArray) {
             NSDictionary *feedDict = dict1[@"feed"];
-            FeedModel *model = [[FeedModel alloc] initWithDictionary:feedDict error:nil];
+            FeedModel *model = [[FeedModel alloc] initWithDictionary:feedDict error:nil];     
+            
+            NSDictionary *share = feedDict[@"share"];
+            NSDictionary *shareUrls = share[@"urls"];
+            ShareModel *shareModel = [[ShareModel alloc] initWithDictionary:shareUrls error:nil];
+            shareModel.text = share[@"text"];
+            shareModel.weiboText = share[@"weiboText"];
+            model.share = shareModel;
+            model.hasFollowed = dict1[@"hasFollowed"];
+
             model.hasFollowed = dict1[@"hasFollowed"];
             
             [_dataArray addObject:model];
@@ -294,7 +296,7 @@
     cell.model = _dataArray[indexPath.row] ;
     cell.model2 = _dataArray[indexPath.row];
     cell.row = indexPath.row;
-    
+    cell.delegate = self;
     return cell;
 }
 

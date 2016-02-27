@@ -33,6 +33,7 @@
 //model
 #import "ActivityModel.h"
 #import "FeedModel.h"
+#import "ShareModel.h"
 
 //网络接口地址
 #import "RequestURL.h"
@@ -47,5 +48,8 @@
 #import "PhotoDetailViewController.h"
 #import "TimerLineViewController.h"
 #import "ShareViewController.h"
+
+//友盟
+#import "UMSocial.h"
 
 #endif
