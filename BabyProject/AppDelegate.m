@@ -229,10 +229,12 @@
     if([reach isReachable])
     {
        // NSLog(@"Notification Says Reachable");
+        [ZSQStorage setNetworkStatus:1];
     }
     else
     {
        // NSLog(@"Notification Says Unreachable");
+        [ZSQStorage setNetworkStatus:0];
         [self showNoticeMsg:@"无网络连接，请检查网络" WithInterval:2.0f];
     }
 }

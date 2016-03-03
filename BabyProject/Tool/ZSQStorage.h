@@ -51,4 +51,12 @@
  */
 + (NSString *)getDocumentsPath;
 
+/*
+ 存储网络连接状态
+ */
++ (void)setNetworkStatus:(NSInteger)status;
+/*
+ 获取网络连接状态
+ */
++ (NSInteger)getNetWorkStatus;
 @end

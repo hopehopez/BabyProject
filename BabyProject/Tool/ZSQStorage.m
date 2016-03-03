@@ -65,5 +65,16 @@
     }
 }
 
+#pragma mark - 存储网络连接状态
++ (void)setNetworkStatus:(NSInteger)status{
+
+    [[NSUserDefaults standardUserDefaults] setInteger:status forKey:@"NetWorkStatus"];
+}
+
+#pragma mark - 获取网络连接状态
++ (NSInteger)getNetWorkStatus{
+
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"NetWorkStatus"];
+}
 
 @end

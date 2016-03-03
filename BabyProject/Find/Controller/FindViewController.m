@@ -77,12 +77,40 @@
 #pragma mark - 下载数据
 - (void)loadData{
     
-    NSString *documentsPath = [ZSQStorage getDocumentsPath];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"diaosi2"];
-    NSData *data1 = [[NSData alloc] initWithContentsOfFile:filePath];
-    NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data1];
-    NSDictionary  *data = [unArchiver decodeObjectForKey:@"cates"];
+    if ([ZSQStorage getNetWorkStatus] == 0) {
+        NSString *documentsPath = [ZSQStorage getDocumentsPath];
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"find"];
+        NSData *data1 = [[NSData alloc] initWithContentsOfFile:filePath];
+        NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data1];
+        NSDictionary  *data = [unArchiver decodeObjectForKey:@"FIND"];
+        if (data) {
+            [self analysisData:data];
+        }
+        
+    }
+    [BaseHttpClient httpType:GET andURL:FIND_SQUARE_URL andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
+        
+        [_tableView.header endRefreshing];
+        
+        NSString *documentsPath = [ZSQStorage getDocumentsPath];
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"find"];
+        NSLog(@"%@", documentsPath);
+        
+        NSMutableData *mData = [[NSMutableData alloc] init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
+        [archiver encodeObject:data forKey:@"FIND"];
+        [archiver finishEncoding];
+        [mData writeToFile:filePath atomically:NO];
+        
+        [self analysisData:data];
+        
+    } andFailBlock:^(NSURL *url, NSError *error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+}
 
+- (void)analysisData:(NSDictionary *)data{
+    
     NSDictionary *data2 = data[@"data"];
     
     //最新主题
@@ -119,73 +147,6 @@
     
     [self.tableView reloadData];
     
-    
-    [BaseHttpClient httpType:GET andURL:FIND_SQUARE_URL andParameters:nil andSuccessBlock:^(NSURL *url, NSDictionary *data) {
-        
-        [_tableView.header endRefreshing];
-        
-        NSString *documentsPath = [ZSQStorage getDocumentsPath];
-        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"diaosi2"];
-        NSLog(@"%@", documentsPath);
-  
-        
-        if (data) {
-            
-            NSMutableData *mData = [[NSMutableData alloc] init];
-            NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
-            [archiver encodeObject:data forKey:@"cates"];
-            [archiver finishEncoding];
-            [mData writeToFile:filePath atomically:NO];
-            
-            
-        }else {
-            
-            NSData *data1 = [[NSData alloc] initWithContentsOfFile:filePath];
-            NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data1];
-            data = [unArchiver decodeObjectForKey:@"cates"];
-            
-        }
-        
-        NSDictionary *data2 = data[@"data"];
-        
-        //最新主题
-        NSDictionary *latestActivityDict = data2[@"latestActivity"];
-        ActivityModel *latestActivityModel = [[ActivityModel alloc] initWithDictionary:latestActivityDict error:nil];
-        [_dataArray addObject:latestActivityModel];
-        
-        //往期主题
-        NSDictionary *lastActivityDict = data2[@"lastActivity"];
-        ActivityModel *lastActivityModel = [[ActivityModel alloc] initWithDictionary:lastActivityDict error:nil];
-        [_dataArray addObject:lastActivityModel];
-        
-        //推荐
-        NSMutableArray *mArray = [NSMutableArray array];
-        NSArray *array = data2[@"recommendTagFeeds"];
-        for (NSDictionary *dict in array){
-            
-            NSString *count = dict[@"count"];
-            NSString *imageUrls = dict[@"imageUrls"];
-            NSArray *imagesArray = [imageUrls componentsSeparatedByString:@","];
-            NSDictionary *tagDict = dict[@"tag"];
-            
-            NSDictionary *recommendDict = @{@"count":count,
-                                            @"imagesArray":imagesArray,
-                                            @"ID":tagDict[@"id"],
-                                            @"name":tagDict[@"name"],
-                                            @"type":tagDict[@"type"]};
-            
-            RecommendModel *recommentModel = [[RecommendModel alloc] initWithDictionary:recommendDict error:nil];
-            [mArray addObject:recommentModel];
-            
-        }
-        [_dataArray addObject:mArray];
-        
-        [self.tableView reloadData];
-        
-        
-    } andFailBlock:^(NSURL *url, NSError *error) {
-        NSLog(@"%@", error.localizedDescription);
-    }];
 }
 
 #pragma mark - data Source
